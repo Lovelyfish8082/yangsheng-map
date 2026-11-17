@@ -5,253 +5,530 @@
     {
       "id": "chang-gung",
       "name": "長庚養生文化村",
-      "city": "桃園市", "district": "龜山區",
+      "city": "桃園市",
+      "district": "龜山區",
       "address": "桃園市龜山區長青路2號",
-      "lat": 25.0560, "lng": 121.3700, "coord_approx": true,
+      "lat": 25.056,
+      "lng": 121.37,
+      "coord_approx": true,
       "phone": "03-319-7200",
-      "type": "private", "status": "open",
-      "deposit": { "min": 250000, "max": 340000, "text": "單人 25～34 萬；雙人 30～40 萬" },
-      "monthly": { "min": 27500, "max": 47800, "text": "單人 2.75～4.78 萬；雙人每月另加 6,000 元" },
+      "type": "private",
+      "status": "open",
+      "deposit": {
+        "min": 250000,
+        "max": 340000,
+        "text": "單人 25～34 萬；雙人 30～40 萬"
+      },
+      "monthly": {
+        "min": 27500,
+        "max": 47800,
+        "text": "單人 2.75～4.78 萬；雙人每月另加 6,000 元"
+      },
       "rooms": "依坪數與房型",
       "medical": "長庚醫療體系後援，鄰近林口長庚",
       "eligibility": "需能生活自理（詳細條件請電洽）",
-      "tags": ["醫療體系", "大型園區", "步道多", "社團多"],
+      "tags": [
+        "醫療體系",
+        "大型園區",
+        "步道多",
+        "社團多"
+      ],
       "source": "https://health.tvbs.com.tw/life/358897",
       "source_name": "TVBS 養生村費用比較",
-      "confidence": "media", "verified_at": "2026-11-17"
+      "confidence": "media",
+      "verified_at": "2026-11-17",
+      "founded": 2005,
+      "founded_note": null,
+      "founded_source": "https://www.cgmh.org.tw/cgmn/cgmn_file/2412014.pdf"
     },
     {
       "id": "kang-ning",
       "name": "康寧生活會館",
-      "city": "台北市", "district": "內湖區",
+      "city": "台北市",
+      "district": "內湖區",
       "address": "台北市內湖區成功路五段420巷28號",
-      "lat": 25.0835, "lng": 121.6015, "coord_approx": true,
+      "lat": 25.0835,
+      "lng": 121.6015,
+      "coord_approx": true,
       "phone": "02-2634-8999",
-      "type": "private", "status": "open",
-      "deposit": { "min": 300000, "max": 300000, "text": "30 萬" },
-      "monthly": { "min": 70000, "max": 140000, "text": "月租 7～14 萬（依坪數）" },
+      "type": "private",
+      "status": "open",
+      "deposit": {
+        "min": 300000,
+        "max": 300000,
+        "text": "30 萬"
+      },
+      "monthly": {
+        "min": 70000,
+        "max": 140000,
+        "text": "月租 7～14 萬（依坪數）"
+      },
       "rooms": "20、25、30 坪",
       "medical": "鄰近康寧醫院（請電洽確認合作內容）",
       "eligibility": "請電洽",
-      "tags": ["台北市區", "近大湖公園"],
+      "tags": [
+        "台北市區",
+        "近大湖公園"
+      ],
       "source": "https://www.edh.tw/lohas/article/32214",
       "source_name": "早安健康 養生村整理",
-      "confidence": "media", "verified_at": "2026-11-17"
+      "confidence": "media",
+      "verified_at": "2026-11-17",
+      "founded": null,
+      "founded_note": null,
+      "founded_source": null
     },
     {
       "id": "run-fu",
       "name": "潤福生活新象",
-      "city": "新北市", "district": "淡水區",
+      "city": "新北市",
+      "district": "淡水區",
       "address": "新北市淡水區（請電洽確認）",
-      "lat": 25.1370, "lng": 121.4620, "coord_approx": true,
+      "lat": 25.137,
+      "lng": 121.462,
+      "coord_approx": true,
       "phone": null,
-      "type": "private", "status": "open",
-      "deposit": { "min": 7000000, "max": 15000000, "text": "押租金約 700～1,500 萬（依坪數與樓層，退租時退還）" },
-      "monthly": { "min": 27900, "max": 27900, "text": "無月租；生活費單人約 2.79 萬、雙人約 4.93 萬" },
+      "type": "private",
+      "status": "open",
+      "deposit": {
+        "min": 7000000,
+        "max": 15000000,
+        "text": "押租金約 700～1,500 萬（依坪數與樓層，退租時退還）"
+      },
+      "monthly": {
+        "min": 27900,
+        "max": 27900,
+        "text": "無月租；生活費單人約 2.79 萬、雙人約 4.93 萬"
+      },
       "rooms": "15、24、30 坪",
       "medical": "醫療專車，鄰近淡水馬偕醫院",
       "eligibility": "請電洽",
-      "tags": ["海景", "接駁巴士", "營運最久"],
+      "tags": [
+        "海景",
+        "接駁巴士",
+        "營運最久"
+      ],
       "source": "https://health.tvbs.com.tw/life/358897",
       "source_name": "TVBS 養生村費用比較",
-      "confidence": "media", "verified_at": "2026-11-17"
+      "confidence": "media",
+      "verified_at": "2026-11-17",
+      "founded": 1996,
+      "founded_note": null,
+      "founded_source": "https://health.tvbs.com.tw/life/358897"
     },
     {
       "id": "jasper",
       "name": "新光新板傑仕堡",
-      "city": "新北市", "district": "板橋區",
+      "city": "新北市",
+      "district": "板橋區",
       "address": "新北市板橋區新板特區（請電洽確認）",
-      "lat": 25.0135, "lng": 121.4650, "coord_approx": true,
+      "lat": 25.0135,
+      "lng": 121.465,
+      "coord_approx": true,
       "phone": null,
-      "type": "private", "status": "open",
-      "deposit": { "min": null, "max": null, "text": "依租賃契約" },
-      "monthly": { "min": 68000, "max": 100000, "text": "約 6.8～10 萬（年租方案）" },
+      "type": "private",
+      "status": "open",
+      "deposit": {
+        "min": null,
+        "max": null,
+        "text": "依租賃契約"
+      },
+      "monthly": {
+        "min": 68000,
+        "max": 100000,
+        "text": "約 6.8～10 萬（年租方案）"
+      },
       "rooms": "30、40 坪",
       "medical": "請電洽",
       "eligibility": "請電洽",
-      "tags": ["飯店式", "近三鐵", "可試住", "游泳池"],
+      "tags": [
+        "飯店式",
+        "近三鐵",
+        "可試住",
+        "游泳池"
+      ],
       "source": "https://helloyishi.com.tw/health/general-health-knowledge/adb-retirement-village/",
       "source_name": "Hello 醫師 養生村整理",
-      "confidence": "media", "verified_at": "2026-11-17"
+      "confidence": "media",
+      "verified_at": "2026-11-17",
+      "founded": 2019,
+      "founded_note": null,
+      "founded_source": "https://cdn.technews.tw/2021/01/24/what-health-house-does-the-rich-old-man-want-to-live-in/"
     },
     {
       "id": "letaoju-zhonghe",
       "name": "樂陶居中和館",
-      "city": "新北市", "district": "中和區",
+      "city": "新北市",
+      "district": "中和區",
       "address": "新北市中和區（捷運站旁，請電洽確認）",
-      "lat": 24.9990, "lng": 121.4990, "coord_approx": true,
+      "lat": 24.999,
+      "lng": 121.499,
+      "coord_approx": true,
       "phone": null,
-      "type": "private", "status": "open",
-      "deposit": { "min": 58000, "max": 97000, "text": "2 個月租金（約 5.8～9.7 萬）" },
-      "monthly": { "min": 29000, "max": 48500, "text": "2.9～4.85 萬（依房型）" },
+      "type": "private",
+      "status": "open",
+      "deposit": {
+        "min": 58000,
+        "max": 97000,
+        "text": "2 個月租金（約 5.8～9.7 萬）"
+      },
+      "monthly": {
+        "min": 29000,
+        "max": 48500,
+        "text": "2.9～4.85 萬（依房型）"
+      },
       "rooms": "12～35 坪",
       "medical": "請電洽",
       "eligibility": "請電洽",
-      "tags": ["近捷運", "青銀共居", "可試住"],
+      "tags": [
+        "近捷運",
+        "青銀共居",
+        "可試住"
+      ],
       "source": "https://health.tvbs.com.tw/life/358897",
       "source_name": "TVBS 養生村費用比較",
-      "confidence": "media", "verified_at": "2026-11-17"
+      "confidence": "media",
+      "verified_at": "2026-11-17",
+      "founded": 2018,
+      "founded_note": null,
+      "founded_source": "https://www.moneyweekly.com.tw/_Article?AID=50477"
     },
     {
       "id": "letaoju-sanzhi",
       "name": "樂陶居三芝館",
-      "city": "新北市", "district": "三芝區",
+      "city": "新北市",
+      "district": "三芝區",
       "address": "新北市三芝區（與日初不老莊園同園區，請電洽確認）",
-      "lat": 25.2425, "lng": 121.5110, "coord_approx": true,
+      "lat": 25.2425,
+      "lng": 121.511,
+      "coord_approx": true,
       "phone": null,
-      "type": "private", "status": "open",
-      "deposit": { "min": null, "max": null, "text": "請電洽" },
-      "monthly": { "min": 27000, "max": 45000, "text": "約 2.7～4.5 萬（樂陶居整體價位）" },
+      "type": "private",
+      "status": "open",
+      "deposit": {
+        "min": null,
+        "max": null,
+        "text": "請電洽"
+      },
+      "monthly": {
+        "min": 27000,
+        "max": 45000,
+        "text": "約 2.7～4.5 萬（樂陶居整體價位）"
+      },
       "rooms": "請電洽",
       "medical": "請電洽",
       "eligibility": "請電洽",
-      "tags": ["郊區", "看海"],
+      "tags": [
+        "郊區",
+        "看海"
+      ],
       "source": "https://health.tvbs.com.tw/life/358897",
       "source_name": "TVBS 養生村費用比較",
-      "confidence": "media", "verified_at": "2026-11-17"
+      "confidence": "media",
+      "verified_at": "2026-11-17",
+      "founded": null,
+      "founded_note": null,
+      "founded_source": null
     },
     {
       "id": "richu",
       "name": "日初不老莊園",
-      "city": "新北市", "district": "三芝區",
+      "city": "新北市",
+      "district": "三芝區",
       "address": "新北市三芝區北勢子20-4號",
-      "lat": 25.2430, "lng": 121.5100, "coord_approx": true,
+      "lat": 25.243,
+      "lng": 121.51,
+      "coord_approx": true,
       "phone": "02-8635-1333",
-      "type": "private", "status": "open",
-      "deposit": { "min": null, "max": null, "text": "依購屋或租賃契約" },
-      "monthly": { "min": 35000, "max": null, "text": "出租型月租 3.5 萬起；另有出售型" },
+      "type": "private",
+      "status": "open",
+      "deposit": {
+        "min": null,
+        "max": null,
+        "text": "依購屋或租賃契約"
+      },
+      "monthly": {
+        "min": 35000,
+        "max": null,
+        "text": "出租型月租 3.5 萬起；另有出售型"
+      },
       "rooms": "出售型與出租型",
       "medical": "請電洽",
       "eligibility": "請電洽",
-      "tags": ["郊區", "戶戶看海", "可買可租"],
+      "tags": [
+        "郊區",
+        "戶戶看海",
+        "可買可租"
+      ],
       "source": "https://www.edh.tw/lohas/article/32214",
       "source_name": "早安健康 養生村整理",
-      "confidence": "media", "verified_at": "2026-11-17"
+      "confidence": "media",
+      "verified_at": "2026-11-17",
+      "founded": 2026,
+      "founded_note": "預計 2026 年上半年全案完工",
+      "founded_source": "https://money.udn.com/money/amp/story/5621/9182231"
     },
     {
       "id": "mackay-sanzhi",
       "name": "雙連安養中心",
-      "city": "新北市", "district": "三芝區",
+      "city": "新北市",
+      "district": "三芝區",
       "address": "新北市三芝區（請電洽確認）",
-      "lat": 25.2560, "lng": 121.5020, "coord_approx": true,
+      "lat": 25.256,
+      "lng": 121.502,
+      "coord_approx": true,
       "phone": null,
-      "type": "nonprofit", "status": "open",
-      "deposit": { "min": null, "max": null, "text": "待查證" },
-      "monthly": { "min": null, "max": null, "text": "待查證" },
+      "type": "nonprofit",
+      "status": "open",
+      "deposit": {
+        "min": null,
+        "max": null,
+        "text": "待查證"
+      },
+      "monthly": {
+        "min": null,
+        "max": null,
+        "text": "待查證"
+      },
       "rooms": "待查證",
       "medical": "待查證",
       "eligibility": "待查證",
-      "tags": ["財團法人", "待查證"],
-      "source": null, "source_name": null,
-      "confidence": "unverified", "verified_at": null
+      "tags": [
+        "財團法人",
+        "待查證"
+      ],
+      "source": null,
+      "source_name": null,
+      "confidence": "unverified",
+      "verified_at": null,
+      "founded": null,
+      "founded_note": "2021 年報導稱已有約 40 年經驗",
+      "founded_source": null
     },
     {
       "id": "sampo-tucheng",
       "name": "SAMPO 橘青春樂齡宅（土城館）",
-      "city": "新北市", "district": "土城區",
+      "city": "新北市",
+      "district": "土城區",
       "address": "新北市土城區（籌備中）",
-      "lat": 24.9800, "lng": 121.4450, "coord_approx": true,
+      "lat": 24.98,
+      "lng": 121.445,
+      "coord_approx": true,
       "phone": null,
-      "type": "private", "status": "upcoming",
-      "deposit": { "min": null, "max": null, "text": "尚未公布" },
-      "monthly": { "min": null, "max": null, "text": "尚未公布" },
+      "type": "private",
+      "status": "upcoming",
+      "deposit": {
+        "min": null,
+        "max": null,
+        "text": "尚未公布"
+      },
+      "monthly": {
+        "min": null,
+        "max": null,
+        "text": "尚未公布"
+      },
       "rooms": "尚未公布",
       "medical": "尚未公布",
       "eligibility": "尚未公布",
-      "tags": ["籌備中", "只租不售"],
+      "tags": [
+        "籌備中",
+        "只租不售"
+      ],
       "source": "https://health.tvbs.com.tw/life/358897",
       "source_name": "TVBS 養生村費用比較",
-      "confidence": "media", "verified_at": "2026-11-17"
+      "confidence": "media",
+      "verified_at": "2026-11-17",
+      "founded": 2026,
+      "founded_note": "預計 2026 年底啟用",
+      "founded_source": "https://health.tvbs.com.tw/life/358897"
     },
     {
       "id": "yangming",
       "name": "陽明老人公寓",
-      "city": "台北市", "district": "士林區",
+      "city": "台北市",
+      "district": "士林區",
       "address": "台北市士林區格致路7號3-6樓",
-      "lat": 25.1355, "lng": 121.5395, "coord_approx": true,
+      "lat": 25.1355,
+      "lng": 121.5395,
+      "coord_approx": true,
       "phone": "02-2862-9296",
-      "type": "public", "status": "open",
-      "deposit": { "min": 33600, "max": 33600, "text": "33,600 元" },
-      "monthly": { "min": 16800, "max": 16800, "text": "單人房 16,800 元" },
+      "type": "public",
+      "status": "open",
+      "deposit": {
+        "min": 33600,
+        "max": 33600,
+        "text": "33,600 元"
+      },
+      "monthly": {
+        "min": 16800,
+        "max": 16800,
+        "text": "單人房 16,800 元"
+      },
       "rooms": "單人房",
       "medical": "請電洽",
       "eligibility": "設籍台北市、65 歲以上、稅率未達 20%、能生活自理；中低與低收入戶優先",
-      "tags": ["公辦民營", "需設籍台北"],
+      "tags": [
+        "公辦民營",
+        "需設籍台北"
+      ],
       "source": "https://health.tvbs.com.tw/life/364358",
       "source_name": "TVBS 公辦老人公寓",
-      "confidence": "media", "verified_at": "2026-11-17"
+      "confidence": "media",
+      "verified_at": "2026-11-17",
+      "founded": null,
+      "founded_note": null,
+      "founded_source": null
     },
     {
       "id": "zhulun",
       "name": "朱崙老人公寓",
-      "city": "台北市", "district": "中山區",
+      "city": "台北市",
+      "district": "中山區",
       "address": "台北市中山區龍江路15號4-7樓",
-      "lat": 25.0485, "lng": 121.5410, "coord_approx": true,
+      "lat": 25.0485,
+      "lng": 121.541,
+      "coord_approx": true,
       "phone": "02-2778-5153",
-      "type": "public", "status": "open",
-      "deposit": { "min": 37000, "max": 37000, "text": "2 個月租金" },
-      "monthly": { "min": 18500, "max": null, "text": "單人房 18,500 元起" },
+      "type": "public",
+      "status": "open",
+      "deposit": {
+        "min": 37000,
+        "max": 37000,
+        "text": "2 個月租金"
+      },
+      "monthly": {
+        "min": 18500,
+        "max": null,
+        "text": "單人房 18,500 元起"
+      },
       "rooms": "單人房、雙人房",
       "medical": "請電洽",
       "eligibility": "設籍台北市、65 歲以上、稅率未達 20%、能生活自理；低收入戶 8 折",
-      "tags": ["公辦民營", "需設籍台北", "市中心"],
+      "tags": [
+        "公辦民營",
+        "需設籍台北",
+        "市中心"
+      ],
       "source": "https://health.tvbs.com.tw/life/364358",
       "source_name": "TVBS 公辦老人公寓",
-      "confidence": "media", "verified_at": "2026-11-17"
+      "confidence": "media",
+      "verified_at": "2026-11-17",
+      "founded": null,
+      "founded_note": null,
+      "founded_source": null
     },
     {
       "id": "zhongshan",
       "name": "中山老人住宅",
-      "city": "台北市", "district": "中山區",
+      "city": "台北市",
+      "district": "中山區",
       "address": "台北市中山區新生北路二段101巷2號",
-      "lat": 25.0595, "lng": 121.5275, "coord_approx": true,
+      "lat": 25.0595,
+      "lng": 121.5275,
+      "coord_approx": true,
       "phone": "02-2542-0006",
-      "type": "public", "status": "open",
-      "deposit": { "min": 32000, "max": 32000, "text": "32,000 元" },
-      "monthly": { "min": 16000, "max": null, "text": "16,000 元起" },
+      "type": "public",
+      "status": "open",
+      "deposit": {
+        "min": 32000,
+        "max": 32000,
+        "text": "32,000 元"
+      },
+      "monthly": {
+        "min": 16000,
+        "max": null,
+        "text": "16,000 元起"
+      },
       "rooms": "單人房、雙人房",
       "medical": "請電洽",
       "eligibility": "設籍台北市、65 歲以上、稅率未達 20%、能生活自理",
-      "tags": ["公辦民營", "需設籍台北", "市中心"],
+      "tags": [
+        "公辦民營",
+        "需設籍台北",
+        "市中心"
+      ],
       "source": "https://health.tvbs.com.tw/life/364358",
       "source_name": "TVBS 公辦老人公寓",
-      "confidence": "media", "verified_at": "2026-11-17"
+      "confidence": "media",
+      "verified_at": "2026-11-17",
+      "founded": 2010,
+      "founded_note": null,
+      "founded_source": "https://www.thenewslens.com/article/180241"
     },
     {
       "id": "dalong",
       "name": "大龍老人住宅",
-      "city": "台北市", "district": "大同區",
+      "city": "台北市",
+      "district": "大同區",
       "address": "台北市大同區民族西路105號4-9樓",
-      "lat": 25.0690, "lng": 121.5165, "coord_approx": true,
+      "lat": 25.069,
+      "lng": 121.5165,
+      "coord_approx": true,
       "phone": "02-6617-8186",
-      "type": "public", "status": "open",
-      "deposit": { "min": 38000, "max": 38000, "text": "2 個月租金" },
-      "monthly": { "min": 19000, "max": 19000, "text": "19,000 元" },
+      "type": "public",
+      "status": "open",
+      "deposit": {
+        "min": 38000,
+        "max": 38000,
+        "text": "2 個月租金"
+      },
+      "monthly": {
+        "min": 19000,
+        "max": 19000,
+        "text": "19,000 元"
+      },
       "rooms": "單人房",
       "medical": "請電洽",
       "eligibility": "設籍台北市、65 歲以上、稅率未達 20%、能生活自理；中低收入戶 8 折",
-      "tags": ["公辦民營", "需設籍台北", "近捷運"],
+      "tags": [
+        "公辦民營",
+        "需設籍台北",
+        "近捷運"
+      ],
       "source": "https://health.tvbs.com.tw/life/364358",
       "source_name": "TVBS 公辦老人公寓",
-      "confidence": "media", "verified_at": "2026-11-17"
+      "confidence": "media",
+      "verified_at": "2026-11-17",
+      "founded": null,
+      "founded_note": null,
+      "founded_source": null
     },
     {
       "id": "wugu",
       "name": "五股老人公寓",
-      "city": "新北市", "district": "五股區",
+      "city": "新北市",
+      "district": "五股區",
       "address": "新北市五股區（請電洽確認）",
-      "lat": 25.0830, "lng": 121.4380, "coord_approx": true,
+      "lat": 25.083,
+      "lng": 121.438,
+      "coord_approx": true,
       "phone": "02-2217-3517",
-      "type": "public", "status": "open",
-      "deposit": { "min": 28000, "max": 28000, "text": "2 個月租金" },
-      "monthly": { "min": 14000, "max": null, "text": "14,000 元起" },
+      "type": "public",
+      "status": "open",
+      "deposit": {
+        "min": 28000,
+        "max": 28000,
+        "text": "2 個月租金"
+      },
+      "monthly": {
+        "min": 14000,
+        "max": null,
+        "text": "14,000 元起"
+      },
       "rooms": "請電洽",
       "medical": "請電洽",
       "eligibility": "請電洽",
-      "tags": ["公辦民營", "新北唯一公辦"],
+      "tags": [
+        "公辦民營",
+        "新北唯一公辦"
+      ],
       "source": "https://health.tvbs.com.tw/life/364358",
       "source_name": "TVBS 公辦老人公寓",
-      "confidence": "media", "verified_at": "2026-11-17"
+      "confidence": "media",
+      "verified_at": "2026-11-17",
+      "founded": null,
+      "founded_note": null,
+      "founded_source": null
     }
   ]
 }

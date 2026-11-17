@@ -53,6 +53,18 @@
     if (!r || r.min == null) return null;
     return r.max != null ? (r.min + r.max) / 2 : r.min;
   }
+  // 成立年度與成立幾年（依今天的年份自動計算）
+  function foundedText(v) {
+    if (!v.founded) return v.founded_note ? '待查證（' + v.founded_note + '）' : '待查證';
+    const age = new Date().getFullYear() - v.founded;
+    if (age <= 0) return v.founded + ' 年' + (v.founded_note ? '（' + v.founded_note + '）' : '（新開幕）');
+    return v.founded + ' 年・已成立 ' + age + ' 年';
+  }
+  const foundedShort = v => {
+    if (!v.founded) return null;
+    const age = new Date().getFullYear() - v.founded;
+    return age <= 0 ? v.founded + ' 年' + (v.founded_note ? '啟用' : '新開') : '成立 ' + age + ' 年';
+  };
   const typeName = t => ({ public: '公辦民營', private: '私立', nonprofit: '財團法人' }[t] || t);
   const typeClass = t => (t === 'public' ? 'public' : 'private');
 
@@ -325,6 +337,7 @@
       '<h3>' + esc(v.name) + '</h3>' + distLines(v) +
       '<div><span class="badge ' + typeClass(v.type) + '">' + esc(typeName(v.type)) + '</span>' +
       (v.status === 'upcoming' ? '<span class="badge warn">籌備中</span>' : '') +
+      (foundedShort(v) ? '<span class="badge">🏛 ' + esc(foundedShort(v)) + '</span>' : '') +
       (v.confidence === 'unverified' ? '<span class="badge warn">資料待查證</span>' : '') +
       v.tags.filter(t => t !== '籌備中' && t !== '待查證' && t !== typeName(v.type)).slice(0, 3).map(t => '<span class="badge">' + esc(t) + '</span>').join('') + '</div>' +
       '<div class="money"><div><small>每月約</small><b>' + esc(range(v.monthly) || '請電洽') + '</b></div>' +
@@ -422,6 +435,7 @@
       '</div>' +
       '<h2>基本資料</h2>' +
       '<dl class="info">' +
+      '<div><dt>成立年度</dt><dd>' + esc(foundedText(v)) + (v.founded_source ? '　<a href="' + esc(v.founded_source) + '" target="_blank" rel="noopener">來源</a>' : '') + '</dd></div>' +
       '<div><dt>地址</dt><dd>' + esc(v.address) + '</dd></div>' +
       '<div><dt>房型</dt><dd>' + esc(v.rooms) + '</dd></div>' +
       '<div><dt>醫療資源</dt><dd>' + esc(v.medical) + '</dd></div>' +
@@ -462,7 +476,8 @@
     const cm = cheapest('monthly'), cd = cheapest('deposit');
     const rows = [
       ['地區', v => v.city + v.district],
-      ['類型', v => typeName(v.type)]
+      ['類型', v => typeName(v.type)],
+      ['成立年度', v => foundedText(v)]
     ];
     activePlaces().forEach(p => rows.push(['離' + p.name, v => tripText(p, v)]));
     rows.push(

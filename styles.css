@@ -166,3 +166,4 @@ input[type=number], input[type=text], input[type=search] {
 .addr-hit { text-align: left; font-size: .9em; }
 @media (min-width: 560px) { .big-nums.two { grid-template-columns: 1fr 1fr; } }
 .custom[hidden] { display: none; }
+dl.info dd a { color: var(--brand); font-size: .85em; }

@@ -528,9 +528,10 @@
       "source_name": "TVBS 公辦老人公寓",
       "confidence": "media",
       "verified_at": "2026-11-17",
-      "founded": null,
-      "founded_note": "2008 年報導時已在營運，確切年份待查證",
-      "founded_source": "http://www.epochtimes.com/b5/10/5/20/n2914301.htm"
+      "founded": 2006,
+      "founded_note": null,
+      "founded_source": null,
+      "founded_by": "family"
     }
   ]
 }

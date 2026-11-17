@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>養生村地圖</title>
+  <meta name="description" content="桃園以北養生村與老人公寓的地圖、比較與費用圖表，大字好讀。">
+  <meta name="theme-color" content="#1f5f8b">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="養生村地圖">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>養生村地圖</h1>
+    <button id="fontBtn" class="ghost" aria-label="調整字體大小">字 大</button>
+  </header>
+
+  <main>
+    <!-- 地圖 -->
+    <section id="view-map" class="view active" aria-label="地圖">
+      <div class="center-bar">
+        <span>距離從：<b id="centerLabel">政大附近</b></span>
+        <button id="centerBtn" class="small">換地點</button>
+      </div>
+      <div id="map" role="application" aria-label="養生村地圖"></div>
+      <div class="legend">
+        <span><i class="dot public"></i>公辦（較便宜，有資格限制）</span>
+        <span><i class="dot private"></i>私立／財團法人</span>
+      </div>
+    </section>
+
+    <!-- 列表 -->
+    <section id="view-list" class="view" aria-label="列表與篩選">
+      <div class="filters">
+        <div class="filter-group" data-key="city">
+          <h3>地區</h3>
+          <button data-v="all" class="chip on">全部</button>
+          <button data-v="台北市" class="chip">台北</button>
+          <button data-v="新北市" class="chip">新北</button>
+          <button data-v="桃園市" class="chip">桃園</button>
+        </div>
+        <div class="filter-group" data-key="type">
+          <h3>類型</h3>
+          <button data-v="all" class="chip on">全部</button>
+          <button data-v="public" class="chip">公辦</button>
+          <button data-v="private" class="chip">私立</button>
+        </div>
+        <div class="filter-group" data-key="budget">
+          <h3>每月預算</h3>
+          <button data-v="all" class="chip on">不限</button>
+          <button data-v="20000" class="chip">2 萬內</button>
+          <button data-v="35000" class="chip">3.5 萬內</button>
+          <button data-v="50000" class="chip">5 萬內</button>
+        </div>
+        <div class="filter-group" data-key="deposit">
+          <h3>入住先付</h3>
+          <button data-v="all" class="chip on">不限</button>
+          <button data-v="100000" class="chip">10 萬內</button>
+          <button data-v="500000" class="chip">50 萬內</button>
+        </div>
+        <div class="filter-group" data-key="sort">
+          <h3>排序</h3>
+          <button data-v="distance" class="chip on">離我近</button>
+          <button data-v="monthly" class="chip">月費低</button>
+        </div>
+      </div>
+      <p id="resultCount" class="muted"></p>
+      <div id="cards" class="cards"></div>
+    </section>
+
+    <!-- 比較 -->
+    <section id="view-compare" class="view" aria-label="比較">
+      <h2>並排比較</h2>
+      <p class="muted">在列表或詳細頁按「加入比較」，最多 3 間。</p>
+      <div id="compareBox"></div>
+    </section>
+
+    <!-- 圖表 -->
+    <section id="view-charts" class="view" aria-label="費用圖表">
+      <h2>每月費用一覽</h2>
+      <p class="muted">每條橫線是該處的月費範圍（單人），越左越便宜。點一條可看詳細。</p>
+      <div class="chart-wrap" id="monthlyWrap"><canvas id="monthlyChart"></canvas></div>
+      <h2>住 10 年大約花多少</h2>
+      <p class="muted">算法：月費中間值 × 120 個月 ＋ 保證金放 10 年少賺的利息（以年息 2% 估）。保證金本身會退還，不算在內。</p>
+      <div class="chart-wrap" id="tenYearWrap"><canvas id="tenYearChart"></canvas></div>
+      <p class="muted">沒有公開月費的地方不在圖上。</p>
+    </section>
+
+    <!-- 收藏 -->
+    <section id="view-fav" class="view" aria-label="我的收藏">
+      <h2>我的收藏</h2>
+      <p class="muted">收藏和筆記只存在這支手機上。</p>
+      <div id="favCards" class="cards"></div>
+    </section>
+  </main>
+
+  <!-- 詳細頁 -->
+  <div id="detail" class="sheet" role="dialog" aria-modal="true" aria-labelledby="dTitle" hidden>
+    <div class="sheet-inner">
+      <button id="detailClose" class="back">← 回上一頁</button>
+      <div id="detailBody"></div>
+    </div>
+  </div>
+
+  <!-- 換地點 -->
+  <div id="centerSheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="cTitle" hidden>
+    <div class="sheet-inner">
+      <button class="back" data-close>← 回上一頁</button>
+      <h2 id="cTitle">要從哪裡算距離？</h2>
+      <div id="centerPresets" class="stack"></div>
+      <button id="gpsBtn" class="big">📍 用我現在的位置</button>
+      <button id="pickBtn" class="big">👆 在地圖上點一個位置</button>
+      <p class="muted">也可以把常用地點（例如子女家）存起來：在地圖上點選後按「存成常用地點」。</p>
+    </div>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <nav class="tabbar" aria-label="主選單">
+    <button data-view="map" class="on"><span>🗺️</span>地圖</button>
+    <button data-view="list"><span>📋</span>列表</button>
+    <button data-view="compare"><span>⚖️</span>比較 <b id="cmpCount"></b></button>
+    <button data-view="charts"><span>📊</span>圖表</button>
+    <button data-view="fav"><span>❤️</span>收藏</button>
+  </nav>
+
+  <footer class="disclaimer">費用以各家最新公告為準，入住前請先電話確認。地圖位置為大約位置。</footer>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="vendor/chartjs/chart.umd.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

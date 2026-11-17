@@ -29,7 +29,7 @@
     favs: store.get('favs', []),
     notes: store.get('notes', {}),
     compare: store.get('compare', []),
-    filters: { cities: [], type: 'all', monthly: null, deposit: null, sort: 'distance' },
+    filters: { cities: [], type: 'all', monthly: null, deposit: null, founded: null, sort: 'distance' },
     picking: false
   };
 
@@ -307,21 +307,28 @@
       if (f.type === 'veterans' && v.type !== 'veterans') return false;
       if (!inRange(v.monthly, f.monthly)) return false;
       if (!inRange(v.deposit, f.deposit)) return false;
+      if (!inRange(v.founded != null ? { min: v.founded, max: v.founded } : null, f.founded)) return false;
       return true;
     });
     if (f.sort === 'distance' && activePlaces().length) list.sort((a, b) => nearest(a) - nearest(b));
     else list.sort((a, b) => (a.monthly.min == null ? 1e12 : a.monthly.min) - (b.monthly.min == null ? 1e12 : b.monthly.min));
     return list;
   }
-  function parseRange(v) {
+  function parseRange(v, g) {
     if (v === 'all') return null;
     const [a, b] = v.split('-');
+    if (g && g.dataset.unit === 'age') {
+      // 「成立 a～b 年」換算成成立年份範圍；0 年起算的包含尚未啟用的
+      const Y = new Date().getFullYear();
+      return { lo: b === '' ? -Infinity : Y - (+b) + 1, hi: +a === 0 ? Infinity : Y - (+a) };
+    }
     return { lo: (+a || 0) * 10000, hi: b === '' ? Infinity : (+b) * 10000 - 1 };
   }
   function readCustom(g) {
+    const unit = g.dataset.unit === 'age' ? 1 : 10000;
     const lo = parseFloat($('[data-end=lo]', g).value), hi = parseFloat($('[data-end=hi]', g).value);
     if (isNaN(lo) && isNaN(hi)) return null;
-    return { lo: isNaN(lo) ? 0 : lo * 10000, hi: isNaN(hi) ? Infinity : hi * 10000 };
+    return { lo: isNaN(lo) ? -Infinity : lo * unit, hi: isNaN(hi) ? Infinity : hi * unit };
   }
 
   function distLines(v) {
@@ -365,8 +372,8 @@
 
   function renderList() {
     const list = filtered();
-    const priced = state.filters.monthly || state.filters.deposit;
-    $('#resultCount').textContent = '找到 ' + list.length + ' 處' + (priced ? '（價格未公開的不列入）' : '') +
+    const priced = state.filters.monthly || state.filters.deposit || state.filters.founded;
+    $('#resultCount').textContent = '找到 ' + list.length + ' 處' + (priced ? '（價格或年份未公開的不列入）' : '') +
       (state.filters.sort === 'distance' && !activePlaces().length ? '・先到地圖頁「📍 我的地點」新增地點，才能依距離排序' : '');
     const box = $('#cards'); box.innerHTML = '';
     list.forEach(v => box.appendChild(card(v)));
@@ -630,7 +637,7 @@
           chips.forEach(x => x.classList.remove('on')); c.classList.add('on');
           if (g.dataset.range) {
             if (custom) custom.hidden = v !== 'custom';
-            state.filters[key] = v === 'custom' ? readCustom(g) : parseRange(v);
+            state.filters[key] = v === 'custom' ? readCustom(g) : parseRange(v, g);
             if (v === 'custom') { const first = $('input', custom); if (first) first.focus(); }
           } else state.filters[key] = v;
         }

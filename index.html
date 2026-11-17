@@ -79,6 +79,19 @@
             <label>最高 <input type="number" inputmode="decimal" min="0" step="1" data-end="hi"> 萬</label>
           </div>
         </div>
+        <div class="filter-group" data-key="founded" data-range="1" data-unit="age">
+          <h3>成立多久</h3>
+          <button data-v="all" class="chip on">不限</button>
+          <button data-v="0-5" class="chip">新開幕・5 年內</button>
+          <button data-v="5-15" class="chip">5～15 年</button>
+          <button data-v="15-25" class="chip">15～25 年</button>
+          <button data-v="25-" class="chip">25 年以上老字號</button>
+          <button data-v="custom" class="chip">自己填年份</button>
+          <div class="custom" hidden>
+            <label>從 <input type="number" inputmode="numeric" min="1950" max="2100" step="1" placeholder="1990" data-end="lo"> 年</label>
+            <label>到 <input type="number" inputmode="numeric" min="1950" max="2100" step="1" placeholder="2010" data-end="hi"> 年</label>
+          </div>
+        </div>
         <div class="filter-group" data-key="sort">
           <h3>排序</h3>
           <button data-v="distance" class="chip on">離我的地點近</button>

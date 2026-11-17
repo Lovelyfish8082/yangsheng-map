@@ -24,8 +24,8 @@
     <!-- 地圖 -->
     <section id="view-map" class="view active" aria-label="地圖">
       <div class="center-bar">
-        <span>距離從：<b id="centerLabel">政大附近</b></span>
-        <button id="centerBtn" class="small">換地點</button>
+        <span>距離從：<b id="centerLabel">尚未設定</b></span>
+        <button id="centerBtn" class="small">📍 我的地點</button>
       </div>
       <div id="map" role="application" aria-label="養生村地圖"></div>
       <div class="legend">
@@ -37,8 +37,8 @@
     <!-- 列表 -->
     <section id="view-list" class="view" aria-label="列表與篩選">
       <div class="filters">
-        <div class="filter-group" data-key="city">
-          <h3>地區</h3>
+        <div class="filter-group" data-key="cities" data-multi="1">
+          <h3>地區（可複選）</h3>
           <button data-v="all" class="chip on">全部</button>
           <button data-v="台北市" class="chip">台北</button>
           <button data-v="新北市" class="chip">新北</button>
@@ -50,22 +50,36 @@
           <button data-v="public" class="chip">公辦</button>
           <button data-v="private" class="chip">私立</button>
         </div>
-        <div class="filter-group" data-key="budget">
-          <h3>每月預算</h3>
+        <div class="filter-group" data-key="monthly" data-range="1">
+          <h3>每月費用</h3>
           <button data-v="all" class="chip on">不限</button>
-          <button data-v="20000" class="chip">2 萬內</button>
-          <button data-v="35000" class="chip">3.5 萬內</button>
-          <button data-v="50000" class="chip">5 萬內</button>
+          <button data-v="0-2" class="chip">2 萬以下</button>
+          <button data-v="2-3" class="chip">2～3 萬</button>
+          <button data-v="3-5" class="chip">3～5 萬</button>
+          <button data-v="5-8" class="chip">5～8 萬</button>
+          <button data-v="8-" class="chip">8 萬以上</button>
+          <button data-v="custom" class="chip">自己填</button>
+          <div class="custom" hidden>
+            <label>最低 <input type="number" inputmode="decimal" min="0" step="0.5" data-end="lo"> 萬</label>
+            <label>最高 <input type="number" inputmode="decimal" min="0" step="0.5" data-end="hi"> 萬</label>
+          </div>
         </div>
-        <div class="filter-group" data-key="deposit">
-          <h3>入住先付</h3>
+        <div class="filter-group" data-key="deposit" data-range="1">
+          <h3>入住先付（保證金／押金）</h3>
           <button data-v="all" class="chip on">不限</button>
-          <button data-v="100000" class="chip">10 萬內</button>
-          <button data-v="500000" class="chip">50 萬內</button>
+          <button data-v="0-5" class="chip">5 萬以下</button>
+          <button data-v="5-20" class="chip">5～20 萬</button>
+          <button data-v="20-100" class="chip">20～100 萬</button>
+          <button data-v="100-" class="chip">100 萬以上</button>
+          <button data-v="custom" class="chip">自己填</button>
+          <div class="custom" hidden>
+            <label>最低 <input type="number" inputmode="decimal" min="0" step="1" data-end="lo"> 萬</label>
+            <label>最高 <input type="number" inputmode="decimal" min="0" step="1" data-end="hi"> 萬</label>
+          </div>
         </div>
         <div class="filter-group" data-key="sort">
           <h3>排序</h3>
-          <button data-v="distance" class="chip on">離我近</button>
+          <button data-v="distance" class="chip on">離我的地點近</button>
           <button data-v="monthly" class="chip">月費低</button>
         </div>
       </div>
@@ -83,7 +97,7 @@
     <!-- 圖表 -->
     <section id="view-charts" class="view" aria-label="費用圖表">
       <h2>每月費用一覽</h2>
-      <p class="muted">每條橫線是該處的月費範圍（單人），越左越便宜。點一條可看詳細。</p>
+      <p class="muted">每條橫線是該處的月費範圍（單人），右邊數字是金額。點一條可看詳細。</p>
       <div class="chart-wrap" id="monthlyWrap"><canvas id="monthlyChart"></canvas></div>
       <h2>住 10 年大約花多少</h2>
       <p class="muted">算法：月費中間值 × 120 個月 ＋ 保證金放 10 年少賺的利息（以年息 2% 估）。保證金本身會退還，不算在內。</p>
@@ -107,15 +121,26 @@
     </div>
   </div>
 
-  <!-- 換地點 -->
+  <!-- 我的地點 -->
   <div id="centerSheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="cTitle" hidden>
     <div class="sheet-inner">
       <button class="back" data-close>← 回上一頁</button>
-      <h2 id="cTitle">要從哪裡算距離？</h2>
-      <div id="centerPresets" class="stack"></div>
+      <h2 id="cTitle">我的地點</h2>
+      <p class="muted">打勾的地點會一起顯示距離和開車時間，可以同時選好幾個。</p>
+      <div id="placeList" class="stack"></div>
+
+      <h2>新增地點</h2>
+      <label class="field">1. 地點名稱
+        <input id="placeName" type="text" placeholder="例如：政大家、兒子家" maxlength="20">
+      </label>
+      <p class="field-label">2. 選一種方式找位置</p>
+      <div class="addr-row">
+        <input id="addrInput" type="search" placeholder="輸入地址，例如：台北市文山區指南路二段64號" enterkeyhint="search">
+        <button id="addrBtn" class="btn primary">搜尋</button>
+      </div>
+      <div id="addrResults" class="stack"></div>
       <button id="gpsBtn" class="big">📍 用我現在的位置</button>
       <button id="pickBtn" class="big">👆 在地圖上點一個位置</button>
-      <p class="muted">也可以把常用地點（例如子女家）存起來：在地圖上點選後按「存成常用地點」。</p>
     </div>
   </div>
 

@@ -435,7 +435,7 @@
       '</div>' +
       '<h2>基本資料</h2>' +
       '<dl class="info">' +
-      '<div><dt>成立年度</dt><dd>' + esc(foundedText(v)) + (v.founded_source ? '　<a href="' + esc(v.founded_source) + '" target="_blank" rel="noopener">來源</a>' : '') + '</dd></div>' +
+      '<div><dt>成立年度</dt><dd>' + esc(foundedText(v)) + (v.founded_source ? '　<a href="' + esc(v.founded_source) + '" target="_blank" rel="noopener">來源</a>' : (v.founded_by === 'family' ? '　<span class="muted">（家人提供）</span>' : '')) + '</dd></div>' +
       '<div><dt>地址</dt><dd>' + esc(v.address) + '</dd></div>' +
       '<div><dt>房型</dt><dd>' + esc(v.rooms) + '</dd></div>' +
       '<div><dt>醫療資源</dt><dd>' + esc(v.medical) + '</dd></div>' +

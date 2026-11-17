@@ -74,9 +74,10 @@
       "source_name": "早安健康 養生村整理",
       "confidence": "media",
       "verified_at": "2026-11-17",
-      "founded": null,
+      "founded": 1999,
       "founded_note": null,
-      "founded_source": null
+      "founded_source": null,
+      "founded_by": "family"
     },
     {
       "id": "run-fu",
@@ -226,9 +227,9 @@
       "source_name": "TVBS 養生村費用比較",
       "confidence": "media",
       "verified_at": "2026-11-17",
-      "founded": null,
-      "founded_note": null,
-      "founded_source": null
+      "founded": 2026,
+      "founded_note": "與日初不老莊園同園區，2026 年完工交屋",
+      "founded_source": "https://www.ctee.com.tw/news/20260521701283-430606"
     },
     {
       "id": "richu",
@@ -265,8 +266,8 @@
       "confidence": "media",
       "verified_at": "2026-11-17",
       "founded": 2026,
-      "founded_note": "預計 2026 年上半年全案完工",
-      "founded_source": "https://money.udn.com/money/amp/story/5621/9182231"
+      "founded_note": "2026 年完工交屋",
+      "founded_source": "https://www.ctee.com.tw/news/20260521701283-430606"
     },
     {
       "id": "mackay-sanzhi",
@@ -301,9 +302,9 @@
       "source_name": null,
       "confidence": "unverified",
       "verified_at": null,
-      "founded": null,
-      "founded_note": "2021 年報導稱已有約 40 年經驗",
-      "founded_source": null
+      "founded": 2000,
+      "founded_note": null,
+      "founded_source": "https://www.slehtaiwan.com/about-us"
     },
     {
       "id": "sampo-tucheng",
@@ -375,9 +376,10 @@
       "source_name": "TVBS 公辦老人公寓",
       "confidence": "media",
       "verified_at": "2026-11-17",
-      "founded": null,
+      "founded": 1999,
       "founded_note": null,
-      "founded_source": null
+      "founded_source": null,
+      "founded_by": "family"
     },
     {
       "id": "zhulun",
@@ -413,9 +415,9 @@
       "source_name": "TVBS 公辦老人公寓",
       "confidence": "media",
       "verified_at": "2026-11-17",
-      "founded": null,
+      "founded": 2006,
       "founded_note": null,
-      "founded_source": null
+      "founded_source": "https://ocacnews.net/article/117617"
     },
     {
       "id": "zhongshan",
@@ -489,9 +491,9 @@
       "source_name": "TVBS 公辦老人公寓",
       "confidence": "media",
       "verified_at": "2026-11-17",
-      "founded": null,
+      "founded": 2013,
       "founded_note": null,
-      "founded_source": null
+      "founded_source": "https://sec.gov.taipei/News_Content.aspx?n=49B4C3242CB7658C&sms=72544237BBE4C5F6&s=FFF03CCBA90F1B9B"
     },
     {
       "id": "wugu",
@@ -527,8 +529,8 @@
       "confidence": "media",
       "verified_at": "2026-11-17",
       "founded": null,
-      "founded_note": null,
-      "founded_source": null
+      "founded_note": "2008 年報導時已在營運，確切年份待查證",
+      "founded_source": "http://www.epochtimes.com/b5/10/5/20/n2914301.htm"
     }
   ]
 }

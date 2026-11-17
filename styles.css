@@ -8,7 +8,7 @@
   --brand: #1f5f8b;
   --brand-ink: #ffffff;
   --public: #1f5f8b;
-  --private: #c2571a;
+  --private: #c2571a; --vet: #2d7a3a;
   --good: #2d6a2d;
   --warn: #8a5a00;
   --tab-h: 76px;
@@ -16,13 +16,13 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #161616; --card: #222; --ink: #f2f0ea; --muted: #c8c3b8; --line: #3a3833;
-    --brand: #6fb0de; --brand-ink: #10202c; --public: #6fb0de; --private: #f0935a;
+    --brand: #6fb0de; --brand-ink: #10202c; --public: #6fb0de; --private: #f0935a; --vet: #7cc48a;
     --good: #8fd18f; --warn: #f0c060;
   }
 }
 :root[data-theme="dark"] {
     --bg: #161616; --card: #222; --ink: #f2f0ea; --muted: #c8c3b8; --line: #3a3833;
-    --brand: #6fb0de; --brand-ink: #10202c; --public: #6fb0de; --private: #f0935a;
+    --brand: #6fb0de; --brand-ink: #10202c; --public: #6fb0de; --private: #f0935a; --vet: #7cc48a;
     --good: #8fd18f; --warn: #f0c060;
   }
 html.big { --fs: 24px; }
@@ -167,3 +167,6 @@ input[type=number], input[type=text], input[type=search] {
 @media (min-width: 560px) { .big-nums.two { grid-template-columns: 1fr 1fr; } }
 .custom[hidden] { display: none; }
 dl.info dd a { color: var(--brand); font-size: .85em; }
+
+.dot.vet { background: #2d7a3a; }
+.badge.veterans { border-color: var(--vet); color: var(--vet); }

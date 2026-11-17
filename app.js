@@ -65,8 +65,9 @@
     const age = new Date().getFullYear() - v.founded;
     return age <= 0 ? v.founded + ' 年' + (v.founded_note ? '啟用' : '新開') : '成立 ' + age + ' 年';
   };
-  const typeName = t => ({ public: '公辦民營', private: '私立', nonprofit: '財團法人' }[t] || t);
-  const typeClass = t => (t === 'public' ? 'public' : 'private');
+  const typeName = t => ({ public: '公辦民營', private: '私立', nonprofit: '財團法人', veterans: '榮民之家' }[t] || t);
+  const typeClass = t => (t === 'public' ? 'public' : t === 'veterans' ? 'veterans' : 'private');
+  const typeColorVar = t => (t === 'public' ? '--public' : t === 'veterans' ? '--vet' : '--private');
 
   function km(a, b) {
     const R = 6371, rad = x => x * Math.PI / 180;
@@ -165,7 +166,7 @@
     placeLayer = L.layerGroup().addTo(map);
 
     state.villages.forEach(v => {
-      const color = v.type === 'public' ? '#1f5f8b' : '#c2571a';
+      const color = v.type === 'public' ? '#1f5f8b' : v.type === 'veterans' ? '#2d7a3a' : '#c2571a';
       const m = L.circleMarker([v.lat, v.lng], {
         radius: 13, color: '#fff', weight: 3, fillColor: color, fillOpacity: 1
       }).addTo(map);
@@ -302,7 +303,8 @@
     let list = state.villages.filter(v => {
       if (f.cities.length && !f.cities.includes(v.city)) return false;
       if (f.type === 'public' && v.type !== 'public') return false;
-      if (f.type === 'private' && v.type === 'public') return false;
+      if (f.type === 'private' && (v.type === 'public' || v.type === 'veterans')) return false;
+      if (f.type === 'veterans' && v.type !== 'veterans') return false;
       if (!inRange(v.monthly, f.monthly)) return false;
       if (!inRange(v.deposit, f.deposit)) return false;
       return true;
@@ -535,7 +537,7 @@
 
     const withFee = state.villages.filter(v => v.monthly.min != null)
       .sort((a, b) => mid(a.monthly) - mid(b.monthly));
-    const colors = withFee.map(v => v.type === 'public' ? cssVar('--public') : cssVar('--private'));
+    const colors = withFee.map(v => cssVar(typeColorVar(v.type)));
     const shortWan = n => (Math.round(n / 1000) / 10) + '萬';
     const monthLabel = v => {
       const r = v.monthly;
@@ -586,7 +588,7 @@
       data: {
         labels: ten.map(x => twoLines(x.v.name)),
         datasets: [
-          { label: '月費 × 120 個月', data: ten.map(x => x.monthly), backgroundColor: ten.map(x => x.v.type === 'public' ? cssVar('--public') : cssVar('--private')), stack: 's', barThickness: Math.round(fs * 0.9) },
+          { label: '月費 × 120 個月', data: ten.map(x => x.monthly), backgroundColor: ten.map(x => cssVar(typeColorVar(x.v.type))), stack: 's', barThickness: Math.round(fs * 0.9) },
           { label: '保證金少賺的利息', data: ten.map(x => x.interest), backgroundColor: cssVar('--muted'), stack: 's', barThickness: Math.round(fs * 0.9) }
         ]
       },

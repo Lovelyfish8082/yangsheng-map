@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-17",
+  "updated_at": "2026-11-18",
   "note": "費用多為媒體整理的 2026 年參考值，入住前請以各家最新公告為準。地圖位置為大約位置，導航會用名稱搜尋 Google 地圖。",
   "villages": [
     {
@@ -59,9 +59,9 @@
         "text": "30 萬"
       },
       "monthly": {
-        "min": 70000,
-        "max": 140000,
-        "text": "月租 7～14 萬（依坪數）"
+        "min": 85000,
+        "max": 160000,
+        "text": "約 8.5～16 萬（依坪數；另一篇報導為 7～14 萬）"
       },
       "rooms": "20、25、30 坪",
       "medical": "鄰近康寧醫院（請電洽確認合作內容）",
@@ -70,8 +70,8 @@
         "台北市區",
         "近大湖公園"
       ],
-      "source": "https://www.edh.tw/lohas/article/32214",
-      "source_name": "早安健康 養生村整理",
+      "source": "https://orange.udn.com/orange/story/121408/7570847",
+      "source_name": "udn 橘世代 16 大養生村比較",
       "confidence": "media",
       "verified_at": "2026-11-17",
       "founded": 1999,
@@ -88,7 +88,7 @@
       "lat": 25.137,
       "lng": 121.462,
       "coord_approx": true,
-      "phone": null,
+      "phone": "02-2629-9000",
       "type": "private",
       "status": "open",
       "deposit": {
@@ -122,11 +122,11 @@
       "name": "新光新板傑仕堡",
       "city": "新北市",
       "district": "板橋區",
-      "address": "新北市板橋區新板特區（請電洽確認）",
-      "lat": 25.0135,
-      "lng": 121.465,
+      "address": "新北市板橋區縣民大道二段275號",
+      "lat": 25.0128,
+      "lng": 121.4645,
       "coord_approx": true,
-      "phone": null,
+      "phone": "02-7727-3200",
       "type": "private",
       "status": "open",
       "deposit": {
@@ -135,9 +135,9 @@
         "text": "依租賃契約"
       },
       "monthly": {
-        "min": 68000,
-        "max": 100000,
-        "text": "約 6.8～10 萬（年租方案）"
+        "min": 70000,
+        "max": 98000,
+        "text": "一房一廳約 7 萬起；兩房一廳年租 8.3 萬起、月租 9.8 萬起"
       },
       "rooms": "30、40 坪",
       "medical": "請電洽",
@@ -148,8 +148,8 @@
         "可試住",
         "游泳池"
       ],
-      "source": "https://helloyishi.com.tw/health/general-health-knowledge/adb-retirement-village/",
-      "source_name": "Hello 醫師 養生村整理",
+      "source": "https://orange.udn.com/orange/story/121408/7570847",
+      "source_name": "udn 橘世代 16 大養生村比較",
       "confidence": "media",
       "verified_at": "2026-11-17",
       "founded": 2019,
@@ -161,11 +161,11 @@
       "name": "樂陶居中和館",
       "city": "新北市",
       "district": "中和區",
-      "address": "新北市中和區（捷運站旁，請電洽確認）",
-      "lat": 24.999,
-      "lng": 121.499,
+      "address": "新北市中和區景德街17號12樓",
+      "lat": 25.006,
+      "lng": 121.5045,
       "coord_approx": true,
-      "phone": null,
+      "phone": "02-2946-1618",
       "type": "private",
       "status": "open",
       "deposit": {
@@ -274,7 +274,7 @@
       "name": "雙連安養中心",
       "city": "新北市",
       "district": "三芝區",
-      "address": "新北市三芝區（請電洽確認）",
+      "address": "新北市三芝區後厝里22之17號",
       "lat": 25.256,
       "lng": 121.502,
       "coord_approx": true,
@@ -298,8 +298,8 @@
         "財團法人",
         "待查證"
       ],
-      "source": null,
-      "source_name": null,
+      "source": "https://www.slehtaiwan.com/about-us",
+      "source_name": "雙連安養中心官網",
       "confidence": "unverified",
       "verified_at": null,
       "founded": 2000,
@@ -311,11 +311,11 @@
       "name": "SAMPO 橘青春樂齡宅（土城館）",
       "city": "新北市",
       "district": "土城區",
-      "address": "新北市土城區（籌備中）",
-      "lat": 24.98,
-      "lng": 121.445,
+      "address": "新北市土城區忠承路67巷2號",
+      "lat": 24.962,
+      "lng": 121.419,
       "coord_approx": true,
-      "phone": null,
+      "phone": "02-2267-5599",
       "type": "private",
       "status": "upcoming",
       "deposit": {
@@ -326,22 +326,23 @@
       "monthly": {
         "min": null,
         "max": null,
-        "text": "尚未公布"
+        "text": "尚未公布（報導：15 坪初估最高約 6 萬）"
       },
-      "rooms": "尚未公布",
+      "rooms": "全棟 116 戶，只租不售",
       "medical": "尚未公布",
       "eligibility": "尚未公布",
       "tags": [
         "籌備中",
-        "只租不售"
+        "只租不售",
+        "2025/12 起接受預約"
       ],
       "source": "https://health.tvbs.com.tw/life/358897",
       "source_name": "TVBS 養生村費用比較",
       "confidence": "media",
       "verified_at": "2026-11-17",
-      "founded": 2026,
-      "founded_note": "預計 2026 年底啟用",
-      "founded_source": "https://health.tvbs.com.tw/life/358897"
+      "founded": 2027,
+      "founded_note": "2026 年底完工、預計 2027 年第一季營運",
+      "founded_source": "https://news.cnyes.com/news/id/6269356"
     },
     {
       "id": "yangming",
@@ -500,11 +501,11 @@
       "name": "五股老人公寓",
       "city": "新北市",
       "district": "五股區",
-      "address": "新北市五股區（請電洽確認）",
+      "address": "新北市五股區水碓二路1號",
       "lat": 25.083,
       "lng": 121.438,
       "coord_approx": true,
-      "phone": "02-2217-3517",
+      "phone": "02-2291-9699",
       "type": "public",
       "status": "open",
       "deposit": {
@@ -532,6 +533,158 @@
       "founded_note": null,
       "founded_source": null,
       "founded_by": "family"
+    },
+    {
+      "id": "rj-banqiao",
+      "name": "板橋榮家",
+      "city": "新北市",
+      "district": "板橋區",
+      "address": "新北市板橋區大觀路二段32號",
+      "lat": 25.001,
+      "lng": 121.456,
+      "coord_approx": true,
+      "phone": "02-2275-5157",
+      "type": "veterans",
+      "status": "open",
+      "deposit": {
+        "min": 15900,
+        "max": 15900,
+        "text": "入住費 15,900 元（兩個月服務費）"
+      },
+      "monthly": {
+        "min": 12316,
+        "max": 12316,
+        "text": "安養型每人每月 12,316 元"
+      },
+      "rooms": "安養床（可自理）；另有失能、失智養護床",
+      "medical": "榮家內有醫療保健服務（細節請電洽）",
+      "eligibility": "2017 年起開放一般民眾：年滿 61 歲、能自理生活、無法定傳染病；無子女或子女已能謀生，在台無配偶或配偶同意",
+      "tags": [
+        "一般民眾可住",
+        "價格最低",
+        "退輔會"
+      ],
+      "source": "https://orange.udn.com/orange/story/121418/7168833",
+      "source_name": "udn 橘世代 老人公寓與榮民之家整理",
+      "confidence": "media",
+      "verified_at": "2026-11-18",
+      "founded": null,
+      "founded_note": null,
+      "founded_source": null
+    },
+    {
+      "id": "rj-taipei",
+      "name": "臺北榮家",
+      "city": "新北市",
+      "district": "三峽區",
+      "address": "新北市三峽區白雞路127號",
+      "lat": 24.91,
+      "lng": 121.388,
+      "coord_approx": true,
+      "phone": "02-2673-1201",
+      "type": "veterans",
+      "status": "open",
+      "deposit": {
+        "min": 15900,
+        "max": 15900,
+        "text": "入住費 15,900 元（兩個月服務費）"
+      },
+      "monthly": {
+        "min": 12316,
+        "max": 12316,
+        "text": "安養型每人每月 12,316 元；伙食費每月 4,366 元"
+      },
+      "rooms": "安養床（可自理）；另有失能、失智養護床",
+      "medical": "榮家內有醫療保健服務（細節請電洽）",
+      "eligibility": "2017 年起開放一般民眾：年滿 61 歲、能自理生活、無法定傳染病；無子女或子女已能謀生，在台無配偶或配偶同意",
+      "tags": [
+        "一般民眾可住",
+        "價格最低",
+        "退輔會"
+      ],
+      "source": "https://orange.udn.com/orange/story/121418/7168833",
+      "source_name": "udn 橘世代 老人公寓與榮民之家整理",
+      "confidence": "media",
+      "verified_at": "2026-11-18",
+      "founded": null,
+      "founded_note": null,
+      "founded_source": null
+    },
+    {
+      "id": "rj-taoyuan",
+      "name": "桃園榮家",
+      "city": "桃園市",
+      "district": "八德區",
+      "address": "桃園市八德區興豐路1217號",
+      "lat": 24.953,
+      "lng": 121.3,
+      "coord_approx": true,
+      "phone": "03-368-1140",
+      "type": "veterans",
+      "status": "open",
+      "deposit": {
+        "min": 15900,
+        "max": 15900,
+        "text": "入住費 15,900 元（兩個月服務費）"
+      },
+      "monthly": {
+        "min": 12316,
+        "max": 12316,
+        "text": "安養型每人每月 12,316 元"
+      },
+      "rooms": "安養床（可自理）；另有失能、失智養護床",
+      "medical": "榮家內有醫療保健服務（細節請電洽）",
+      "eligibility": "2017 年起開放一般民眾：年滿 61 歲、能自理生活、無法定傳染病；無子女或子女已能謀生，在台無配偶或配偶同意",
+      "tags": [
+        "一般民眾可住",
+        "價格最低",
+        "退輔會"
+      ],
+      "source": "https://orange.udn.com/orange/story/121418/7168833",
+      "source_name": "udn 橘世代 老人公寓與榮民之家整理",
+      "confidence": "media",
+      "verified_at": "2026-11-18",
+      "founded": null,
+      "founded_note": null,
+      "founded_source": null
+    },
+    {
+      "id": "rj-bade",
+      "name": "八德榮家",
+      "city": "桃園市",
+      "district": "八德區",
+      "address": "桃園市八德區榮興路1100號",
+      "lat": 24.933,
+      "lng": 121.283,
+      "coord_approx": true,
+      "phone": "03-365-1285",
+      "type": "veterans",
+      "status": "open",
+      "deposit": {
+        "min": 15900,
+        "max": 15900,
+        "text": "入住費 15,900 元（兩個月服務費）"
+      },
+      "monthly": {
+        "min": 12316,
+        "max": 12316,
+        "text": "安養型每人每月 12,316 元"
+      },
+      "rooms": "安養床（可自理）；另有失能、失智養護床",
+      "medical": "榮家內有醫療保健服務（細節請電洽）",
+      "eligibility": "2017 年起開放一般民眾：年滿 61 歲、能自理生活、無法定傳染病；無子女或子女已能謀生，在台無配偶或配偶同意",
+      "tags": [
+        "一般民眾可住",
+        "價格最低",
+        "退輔會"
+      ],
+      "source": "https://orange.udn.com/orange/story/121418/7168833",
+      "source_name": "udn 橘世代 老人公寓與榮民之家整理",
+      "confidence": "media",
+      "verified_at": "2026-11-18",
+      "founded": null,
+      "founded_note": null,
+      "founded_source": null
     }
   ]
 }

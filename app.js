@@ -168,6 +168,7 @@
     if (view === 'compare') renderCompare();
     if (view === 'charts') renderCharts();
     if (view === 'fav') renderFavs();
+    if (view === 'know' && window.renderKnow) window.renderKnow();
     window.scrollTo(0, 0);
   }
 
@@ -664,7 +665,7 @@
   }
   function bind() {
     $$('.tabbar button').forEach(b => b.onclick = () => show(b.dataset.view));
-    $('#fontBtn').onclick = () => { sizeIdx = (sizeIdx + 1) % 3; store.set('size', sizeIdx); applySize(); if ($('#view-charts').classList.contains('active')) renderCharts(); };
+    $('#fontBtn').onclick = () => { sizeIdx = (sizeIdx + 1) % 3; store.set('size', sizeIdx); applySize(); if ($('#view-charts').classList.contains('active')) renderCharts(); if ($('#view-know').classList.contains('active') && window.renderKnow) setTimeout(window.renderKnow, 60); };
     $('#centerBtn').onclick = openCenterSheet;
     $('#detailClose').onclick = closeDetail;
     $$('[data-close]').forEach(b => b.onclick = () => closeSheet(b.closest('.sheet').id));

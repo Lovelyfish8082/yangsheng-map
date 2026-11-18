@@ -110,7 +110,7 @@ textarea { width: 100%; min-height: 120px; font: inherit; padding: 10px; border-
 
 .tabbar {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 950;
-  display: grid; grid-template-columns: repeat(5, 1fr);
+  display: grid; grid-template-columns: repeat(6, 1fr);
   background: var(--card); border-top: 1px solid var(--line);
   padding-bottom: env(safe-area-inset-bottom);
 }
@@ -200,3 +200,81 @@ html.fs-huge .topbar h1::before { content: none; }
 .topbar h1 { min-width: 0; overflow: hidden; }
 .ghost { flex-shrink: 0; padding: 6px 10px; }
 @media (max-width: 360px) { .topbar h1::before { content: none; } }
+
+/* ---------- 知識+ ---------- */
+.tabbar button { padding: 0 2px; white-space: nowrap; }
+html.fs-big .tabbar button { font-size: .72em; }
+html.fs-huge .tabbar button { font-size: .66em; }
+.k-sec { background: var(--card); border: 2px solid var(--line); border-radius: 20px; margin: 0 0 14px; box-shadow: 0 4px 0 var(--line); overflow: hidden; }
+.k-sec > summary { list-style: none; display: flex; gap: 12px; align-items: center; padding: 14px 16px; cursor: pointer; min-height: 64px; }
+.k-sec > summary::-webkit-details-marker { display: none; }
+.k-sec > summary::after { content: '＋'; margin-left: auto; color: var(--brand); font-weight: 700; font-size: 1.2em; }
+.k-sec[open] > summary::after { content: '－'; }
+.k-sec > summary b { display: block; font-size: 1.1em; font-family: "Noto Serif TC", "Songti TC", serif; }
+.k-sec > summary small { display: block; color: var(--muted); font-size: .8em; line-height: 1.4; }
+.k-ic { font-size: 1.5em; line-height: 1; flex-shrink: 0; }
+.k-body { padding: 0 16px 16px; border-top: 2px dashed var(--line); }
+.k-body > p:first-child { margin-top: 12px; }
+.k-sub { margin: 18px 0 8px; font-size: 1em; }
+.k-chart { margin: 8px 0; }
+
+.spectrum { margin: 12px 0 6px; font-size: .78em; }
+.sp-row { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.sp-headrow { border-bottom: 2px solid var(--line); align-items: end; }
+.sp-name b { display: block; line-height: 1.3; }
+.sp-name small { display: block; color: var(--muted); font-size: .85em; line-height: 1.3; }
+.sp-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; }
+.sp-bar i { display: block; height: 22px; border-radius: 6px; background: var(--soft); }
+.sp-bar i.on { background: var(--brand); }
+.sp-bar i.part { background: repeating-linear-gradient(45deg, var(--brand) 0 4px, var(--soft) 4px 8px); }
+.sp-h { font-size: .78em; line-height: 1.2; text-align: center; color: var(--muted); }
+.legend-k { font-size: .8em; color: var(--muted); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.legend-k i { display: inline-block; width: 22px; height: 14px; border-radius: 4px; background: var(--brand); vertical-align: middle; }
+.legend-k i.part { background: repeating-linear-gradient(45deg, var(--brand) 0 4px, var(--soft) 4px 8px); }
+
+.k-types { display: grid; gap: 10px; margin-top: 12px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.k-type { border: 2px solid var(--line); border-radius: 16px; padding: 10px 14px; background: var(--bg); }
+.k-type h4 { margin: 0 0 6px; font-size: 1.05em; color: var(--brand); }
+.k-type dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; font-size: .88em; }
+.k-type dt { color: var(--muted); }
+.k-type dd { margin: 0; }
+
+.k-costs, .k-points { display: grid; gap: 10px; margin-top: 12px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.k-costs div, .k-points div { border: 2px solid var(--line); border-radius: 16px; padding: 10px 12px; background: var(--bg); position: relative; }
+.k-costs span { font-size: 1.5em; display: block; }
+.k-costs b, .k-points b { display: block; line-height: 1.35; }
+.k-costs small, .k-points small { display: block; color: var(--muted); font-size: .8em; line-height: 1.45; margin-top: 4px; }
+.k-points .k-ic { display: block; margin-bottom: 4px; }
+.k-num { position: absolute; top: 8px; right: 10px; width: 1.6em; height: 1.6em; border-radius: 50%; background: var(--brand); color: var(--brand-ink); font-weight: 700; font-size: .8em; display: grid; place-items: center; }
+
+.k-calc { display: grid; gap: 10px; }
+.k-calc label { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.k-calc label span { display: flex; align-items: center; gap: 6px; }
+.k-calc input[type=number] { width: 5.5em; }
+.k-calc .k-check { justify-content: flex-start; }
+.k-check input, .k-chk input { width: 28px; height: 28px; flex-shrink: 0; accent-color: var(--brand); }
+.k-out { background: var(--soft); border-radius: 16px; padding: 12px 14px; margin: 12px 0; line-height: 1.6; }
+.k-out small { color: var(--muted); }
+
+.k-prog { font-weight: 700; color: var(--brand); }
+.k-chk { border: 2px solid var(--line); border-radius: 16px; margin: 0 0 12px; padding: 4px 12px 8px; }
+.k-chk legend { font-weight: 700; padding: 0 6px; }
+.k-chk label { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 1px dashed var(--line); line-height: 1.45; }
+.k-chk label:last-child { border-bottom: none; }
+.k-chk input:checked + span { color: var(--muted); text-decoration: line-through; }
+
+.k-quiz { padding-left: 1.4em; margin: 8px 0; }
+.k-quiz li { padding: 8px 0; border-bottom: 1px dashed var(--line); }
+.k-quiz p { margin: 0 0 8px; }
+.k-yn { display: flex; gap: 10px; }
+.k-yn button { flex: 1; min-height: 52px; border-radius: 999px; border: 2px solid var(--line); background: var(--bg); font-weight: 700; }
+.k-yn button.on { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); }
+.k-result { display: block; font-size: 1.15em; color: var(--brand); }
+
+.k-myths details { border-bottom: 1px dashed var(--line); }
+.k-myths summary { padding: 12px 0; font-weight: 700; cursor: pointer; }
+.k-myths p { margin: 0 0 12px; }
+.k-src ul { padding-left: 1.2em; }
+.k-src a { color: var(--brand); }
+html.fs-huge .k-sec { border: 3px solid #000; border-radius: 8px; box-shadow: none; }
+html.fs-huge .sp-bar i.on, html.fs-huge .k-yn button.on, html.fs-huge .k-num { background: #000; color: #ffde00; }

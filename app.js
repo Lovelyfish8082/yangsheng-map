@@ -252,7 +252,7 @@
   function renderPlaceList() {
     const box = $('#placeList');
     box.innerHTML = '';
-    if (!state.places.length) { box.innerHTML = '<p>還沒有地點。用下面的方式新增，例如「政大家」「兒子家」。</p>'; return; }
+    if (!state.places.length) { box.innerHTML = '<p>還沒有地點。用下面的方式新增，例如「兒子家」「女兒家」。</p>'; return; }
     state.places.forEach(p => {
       const row = document.createElement('div');
       row.className = 'place-row';

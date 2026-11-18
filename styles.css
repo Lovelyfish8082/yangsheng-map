@@ -350,3 +350,6 @@ html.fs-huge .x-sec, html.fs-huge .c-grp { border: 3px solid #000; border-radius
 html.fs-huge .x-rate button.on, html.fs-huge .c-seg button.on { background: #000; color: #ffde00; }
 html.fs-huge .x-rate { grid-template-columns: 1fr; }
 .x-links a.btn { color: var(--ink); }
+.x-gm { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; margin: 12px 0; }
+.x-gm p { grid-column: 1 / -1; margin: 0; font-weight: 700; }
+.x-gm a.btn { display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--ink); min-height: 52px; }

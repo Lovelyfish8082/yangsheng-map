@@ -75,19 +75,21 @@
     { k: 'park', ic: '🌳', n: '公園', q: 'nwr["leisure"="park"]' },
     { k: 'market', ic: '🛒', n: '市場／超市', q: 'nwr["amenity"="marketplace"];nwr["shop"="supermarket"]' }
   ];
-  const ENDPOINTS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
-  async function overpass(query) {
-    let lastErr;
-    for (const url of ENDPOINTS) {
-      try {
-        const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 25000);
-        const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(query), headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, signal: ctl.signal });
-        clearTimeout(t);
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return await res.json();
-      } catch (e) { lastErr = e; }
-    }
-    throw lastErr;
+  const ENDPOINTS = ['https://overpass-api.de/api/interpreter', 'https://overpass.private.coffee/api/interpreter', 'https://maps.mail.ru/osm/tools/overpass/api/interpreter', 'https://overpass.kumi.systems/api/interpreter'];
+  // 同時問幾個免費伺服器，哪個先回就用哪個；全部失敗才算失敗
+  function overpass(query) {
+    const ctls = [];
+    const one = url => new Promise((res, rej) => {
+      const ctl = new AbortController(); ctls.push(ctl);
+      const t = setTimeout(() => { ctl.abort(); rej(new Error('逾時')); }, 30000);
+      fetch(url + '?data=' + encodeURIComponent(query), { signal: ctl.signal })
+        .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(j => { clearTimeout(t); res(j); }, e => { clearTimeout(t); rej(e); });
+    });
+    return new Promise((res, rej) => {
+      let fails = 0; const errs = [];
+      ENDPOINTS.forEach(u => one(u).then(j => { ctls.forEach(c => { try { c.abort(); } catch (e) {} }); res(j); }, e => { errs.push(e.message); if (++fails === ENDPOINTS.length) rej(new Error(errs.join('、'))); }));
+    });
   }
   const dist = (a, b, c, d) => { const R = 6371000, r = Math.PI / 180, x = (d - b) * r * Math.cos((a + c) / 2 * r), y = (c - a) * r; return Math.sqrt(x * x + y * y) * R; };
   const elLatLng = e => e.lat != null ? [e.lat, e.lon] : e.center ? [e.center.lat, e.center.lon] : null;
@@ -105,7 +107,9 @@
   async function lifeFor(v, force) {
     const key = 'life:' + v.id, cached = ls.get(key, null);
     if (!force && cached && Date.now() - cached.t < 30 * 864e5) return cached;
-    const parts = LIFE.map(c => c.q.split(';').map(q => `${q}(around:${c.k === 'hospital' ? HOSP_RADIUS : RADIUS},${v.lat},${v.lng});`).join('')).join('');
+    // 用方框查詢比「半徑」快很多，距離再自己算
+    const box = m => { const dy = m / 111000, dx = m / (111000 * Math.cos(v.lat * Math.PI / 180)); return `(${(v.lat - dy).toFixed(5)},${(v.lng - dx).toFixed(5)},${(v.lat + dy).toFixed(5)},${(v.lng + dx).toFixed(5)})`; };
+    const parts = LIFE.map(c => c.q.split(';').map(q => `${q}${box(c.k === 'hospital' ? HOSP_RADIUS : RADIUS)};`).join('')).join('');
     const data = await overpass(`[out:json][timeout:25];(${parts});out center tags;`);
     const out = { t: Date.now(), cat: {} };
     LIFE.forEach(c => out.cat[c.k] = { count: 0, near: null });
@@ -121,6 +125,10 @@
     return out;
   }
   const walk = d => d < 1000 ? `${d} 公尺・走路約 ${Math.max(1, Math.round(d / 70))} 分` : `${(d / 1000).toFixed(1)} 公里`;
+  function gmapLinks(v) {
+    const q = w => `https://www.google.com/maps/search/${encodeURIComponent(w)}/@${v.lat},${v.lng},16z`;
+    return `<div class="x-gm"><p>用 Google 地圖看附近：</p>${[['🏥', '醫院'], ['🩺', '診所'], ['🚇', '捷運站'], ['🚌', '公車站'], ['🌳', '公園'], ['🛒', '市場']].map(([i, w]) => `<a class="btn" href="${q(w)}" target="_blank" rel="noopener">${i} ${w}</a>`).join('')}</div>`;
+  }
   function lifeTable(v, r) {
     return `<div class="x-life">${LIFE.map(c => {
       const x = r.cat[c.k] || { count: 0 };
@@ -128,6 +136,7 @@
       return `<div class="${x.count ? '' : 'none'}"><span class="k-ic">${c.ic}</span><span><b>${c.n}</b>
         <small>${x.count ? `${range} ${x.count} 個・最近：${esc(x.near.name || '（未命名）')}，${walk(x.near.d)}` : `${range}沒有找到`}</small></span></div>`;
     }).join('')}</div>
+      ${gmapLinks(v)}
       <p class="muted">資料來自 OpenStreetMap 開放地圖，可能有遺漏，僅供參考。距離為直線距離。
       <button class="small" id="xLifeRe">重新查詢</button></p>`;
   }
@@ -140,7 +149,7 @@
     const load = async force => {
       body.innerHTML = '<p class="muted">查詢中，大約需要幾秒…</p>';
       try { const r = await lifeFor(v, force); body.innerHTML = lifeTable(v, r); $('#xLifeRe', body).onclick = () => load(true); }
-      catch (e) { body.innerHTML = '<p>目前查不到資料，可能是網路不穩或查詢服務忙碌，請稍後再試。</p><button class="small" id="xLifeRe">再試一次</button>'; $('#xLifeRe', body).onclick = () => load(true); }
+      catch (e) { body.innerHTML = '<p>目前查不到資料，可能是網路不穩或免費查詢服務忙碌，請稍後再試，或先用下面的 Google 地圖查。</p><button class="small" id="xLifeRe">再試一次</button>' + gmapLinks(v) + '<p class="muted">（原因：' + esc(e.message) + '）</p>'; $('#xLifeRe', body).onclick = () => load(true); }
     };
     const cached = ls.get('life:' + v.id, null);
     if (cached) { det.open = true; body.innerHTML = lifeTable(v, cached); $('#xLifeRe', body).onclick = () => load(true); }
@@ -201,7 +210,7 @@
           .bindPopup(`<b>${esc(e.tags.name || c.n)}</b><br>${c.n}`).addTo(lifeLayer);
       });
       if (userAction && !(data.elements || []).length) toast('這個範圍沒有找到');
-    } catch (e) { lastKey = ''; if (userAction) toast('生活機能查詢失敗，請稍後再試'); }
+    } catch (e) { lastKey = ''; toast('生活機能查詢失敗，請稍後再試（' + e.message.slice(0, 40) + '）'); }
     fetching = false;
   }
 

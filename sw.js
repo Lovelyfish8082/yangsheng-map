@@ -1,5 +1,5 @@
 /* 離線快取：頁面與資料用「網路優先」，函式庫與地圖圖磚用「快取優先」 */
-const VERSION = 'ysm-v12';
+const VERSION = 'ysm-v13';
 const CORE = ['./', 'index.html', 'styles.css', 'app.js', 'data/villages.json', 'manifest.webmanifest', 'icons/icon-192-v2.png', 'vendor/leaflet/leaflet.js', 'vendor/leaflet/leaflet.css', 'vendor/chartjs/chart.umd.js'];
 
 self.addEventListener('install', e => {

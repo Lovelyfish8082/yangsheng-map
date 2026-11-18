@@ -141,14 +141,29 @@
     document.documentElement.classList.remove('fs-big', 'fs-huge');
     if (SIZES[sizeIdx]) document.documentElement.classList.add(SIZES[sizeIdx]);
     $('#fontBtn').textContent = SIZE_LABEL[sizeIdx];
-    if (map) setTimeout(() => map.invalidateSize(), 50);
+    if (map) setTimeout(fitMap, 50);
   }
+
+  // 地圖高度：剛好填滿畫面，讓圖例和底部選單都看得到，整頁不必捲動
+  function fitMap() {
+    const el = document.getElementById('map');
+    if (!el || !el.offsetParent) return;
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    const legend = document.querySelector('#view-map .legend');
+    const lh = legend ? legend.getBoundingClientRect().height : 0;
+    const tab = document.querySelector('.tabbar').getBoundingClientRect().height;
+    const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    const h = Math.max(240, Math.min(620, Math.floor(vh - top - lh - tab - 12)));
+    el.style.height = h + 'px';
+    if (map) map.invalidateSize();
+  }
+  window.addEventListener('resize', () => setTimeout(fitMap, 50));
 
   // ---------- 分頁 ----------
   function show(view) {
     $$('.view').forEach(v => v.classList.toggle('active', v.id === 'view-' + view));
     $$('.tabbar button').forEach(b => b.classList.toggle('on', b.dataset.view === view));
-    if (view === 'map' && map) setTimeout(() => map.invalidateSize(), 50);
+    if (view === 'map') setTimeout(fitMap, 50);
     if (view === 'list') renderList();
     if (view === 'compare') renderCompare();
     if (view === 'charts') renderCharts();
@@ -198,6 +213,7 @@
   function drawPlaces() {
     const ps = activePlaces();
     $('#centerLabel').textContent = ps.length ? ps.map(p => p.name).join('、') : '尚未設定，按右邊新增';
+    setTimeout(fitMap, 0);
     if (!map) return;
     placeLayer.clearLayers();
     ps.forEach(p => {
@@ -697,6 +713,7 @@
     if (window.L) initMap(); else $('#map').innerHTML = '<p style="padding:16px">地圖需要網路才能顯示，可以先用「📋 列表」。</p>';
     drawPlaces();
     renderList();
+    fitMap();
     const m = location.hash.match(/^#\/v\/(.+)$/);
     if (m) openDetail(m[1]);
     fetchRoutes();

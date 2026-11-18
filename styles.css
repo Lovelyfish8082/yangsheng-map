@@ -1,29 +1,30 @@
 :root {
   --fs: 20px;
-  --bg: #f7f5f0;
-  --card: #ffffff;
-  --ink: #1d1d1b;
-  --muted: #55524b;
-  --line: #d9d4c7;
-  --brand: #1f5f8b;
+  --bg: #f6efe4;
+  --card: #fffaf2;
+  --ink: #3b2a1e;
+  --muted: #6e5a48;
+  --line: #e2d3bd;
+  --soft: #f6e7d3;
+  --brand: #a4502d;
   --brand-ink: #ffffff;
-  --public: #1f5f8b;
-  --private: #c2571a; --vet: #2d7a3a;
-  --good: #2d6a2d;
+  --public: #3f6e8c;
+  --private: #a4502d; --vet: #5e7d3a;
+  --good: #4f7a2e;
   --warn: #8a5a00;
   --tab-h: 76px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #161616; --card: #222; --ink: #f2f0ea; --muted: #c8c3b8; --line: #3a3833;
-    --brand: #6fb0de; --brand-ink: #10202c; --public: #6fb0de; --private: #f0935a; --vet: #7cc48a;
-    --good: #8fd18f; --warn: #f0c060;
+    --bg: #1f1914; --card: #2a221b; --ink: #f4ebdf; --muted: #cdbba6; --line: #4a3d31; --soft: #3a2e24;
+    --brand: #e08a62; --brand-ink: #2a1a10; --public: #8fb6d1; --private: #e08a62; --vet: #a8c47e;
+    --good: #a8c47e; --warn: #f0c060;
   }
 }
 :root[data-theme="dark"] {
-    --bg: #161616; --card: #222; --ink: #f2f0ea; --muted: #c8c3b8; --line: #3a3833;
-    --brand: #6fb0de; --brand-ink: #10202c; --public: #6fb0de; --private: #f0935a; --vet: #7cc48a;
-    --good: #8fd18f; --warn: #f0c060;
+    --bg: #1f1914; --card: #2a221b; --ink: #f4ebdf; --muted: #cdbba6; --line: #4a3d31; --soft: #3a2e24;
+    --brand: #e08a62; --brand-ink: #2a1a10; --public: #8fb6d1; --private: #e08a62; --vet: #a8c47e;
+    --good: #a8c47e; --warn: #f0c060;
   }
 html.big { --fs: 24px; }
 html.huge { --fs: 28px; }
@@ -168,6 +169,41 @@ input[type=number], input[type=text], input[type=search] {
 .custom[hidden] { display: none; }
 dl.info dd a { color: var(--brand); font-size: .85em; }
 
-.dot.vet { background: #2d7a3a; }
+.dot.vet { background: var(--vet); }
 .badge.veterans { border-color: var(--vet); color: var(--vet); }
 .custom input[placeholder] { width: 6em; }
+
+/* ===== 外觀：溫暖的家 ===== */
+h1, h2, .card h3, .big-nums b, .money b { font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif; }
+.topbar { background: var(--card); color: var(--ink); border-bottom: 3px solid var(--line); }
+.topbar h1::before { content: "🏡 "; }
+.ghost { color: var(--brand); border-color: var(--brand); }
+.card { border-radius: 24px; border: 2px solid var(--line); box-shadow: 0 4px 0 var(--line); }
+.money div { background: var(--soft); border-radius: 16px; }
+.chip, .btn, .small, .big { border-radius: 999px; }
+.place-row .toggle, .addr-hit { border-radius: 20px; }
+.big-nums div, .dist-box, dl.info { border-radius: 20px; background: var(--card); }
+.tabbar { background: var(--card); border-top: 3px solid var(--line); }
+.tabbar button.on { color: var(--brand); box-shadow: none; background: var(--soft); border-radius: 16px; }
+.cmp { border-radius: 20px; }
+
+/* ===== 字「特大」時自動切換高對比 ===== */
+html.huge {
+  --bg: #ffffff; --card: #ffffff; --ink: #000000; --muted: #222222; --line: #000000; --soft: #fff7b8;
+  --brand: #000000; --brand-ink: #ffde00; --public: #0040c0; --private: #b02a00; --vet: #006b1f; --tab-h: 88px;
+}
+html.huge body, html.huge h1, html.huge h2, html.huge .card h3, html.huge .big-nums b, html.huge .money b { font-family: -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+html.huge .topbar { background: #000; color: #ffde00; border-bottom: none; }
+html.huge .ghost { color: #ffde00; border-color: #ffde00; }
+html.huge .card { border: 3px solid #000; border-radius: 8px; box-shadow: none; }
+html.huge .money div { border: 2px solid #000; border-radius: 6px; }
+html.huge .badge { border: 2px solid #000; color: #000; font-weight: 700; }
+html.huge .chip, html.huge .btn, html.huge .small, html.huge .big { border: 3px solid #000; border-radius: 8px; font-weight: 700; }
+html.huge .big-nums div, html.huge .dist-box, html.huge dl.info { border: 3px solid #000; border-radius: 8px; }
+html.huge .tabbar { border-top: 3px solid #000; }
+html.huge .tabbar button { color: #000; font-weight: 700; }
+html.huge .tabbar button.on { background: #ffde00; color: #000; border-radius: 0; }
+.topbar h1 { white-space: nowrap; }
+.ghost { white-space: nowrap; }
+html.huge .topbar h1 { font-size: 1.1em; }
+html.huge .topbar h1::before { content: none; }

@@ -166,7 +166,7 @@
     placeLayer = L.layerGroup().addTo(map);
 
     state.villages.forEach(v => {
-      const color = v.type === 'public' ? '#1f5f8b' : v.type === 'veterans' ? '#2d7a3a' : '#c2571a';
+      const color = cssVar(typeColorVar(v.type));
       const m = L.circleMarker([v.lat, v.lng], {
         radius: 13, color: '#fff', weight: 3, fillColor: color, fillOpacity: 1
       }).addTo(map);

@@ -81,7 +81,7 @@
     const ctls = [];
     const one = url => new Promise((res, rej) => {
       const ctl = new AbortController(); ctls.push(ctl);
-      const t = setTimeout(() => { ctl.abort(); rej(new Error('逾時')); }, 30000);
+      const t = setTimeout(() => { ctl.abort(); rej(new Error('逾時')); }, 60000);
       fetch(url + '?data=' + encodeURIComponent(query), { signal: ctl.signal })
         .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
         .then(j => { clearTimeout(t); res(j); }, e => { clearTimeout(t); rej(e); });
@@ -110,7 +110,7 @@
     // 用方框查詢比「半徑」快很多，距離再自己算
     const box = m => { const dy = m / 111000, dx = m / (111000 * Math.cos(v.lat * Math.PI / 180)); return `(${(v.lat - dy).toFixed(5)},${(v.lng - dx).toFixed(5)},${(v.lat + dy).toFixed(5)},${(v.lng + dx).toFixed(5)})`; };
     const parts = LIFE.map(c => c.q.split(';').map(q => `${q}${box(c.k === 'hospital' ? HOSP_RADIUS : RADIUS)};`).join('')).join('');
-    const data = await overpass(`[out:json][timeout:25];(${parts});out center tags;`);
+    const data = await overpass(`[out:json][timeout:55];(${parts});out center tags;`);
     const out = { t: Date.now(), cat: {} };
     LIFE.forEach(c => out.cat[c.k] = { count: 0, near: null });
     (data.elements || []).forEach(e => {
@@ -141,19 +141,19 @@
       <button class="small" id="xLifeRe">重新查詢</button></p>`;
   }
   function lifeHTML() {
-    return `<details class="x-sec" id="xLife"><summary><span class="k-ic">🏙️</span><span><b>附近生活機能</b><small>醫院、診所、捷運、公車、公園、市場</small></span></summary>
+    return `<details class="x-sec" id="xLife"><summary><span class="k-ic">🏙️</span><span><b>附近生活機能</b><small>用 Google 地圖看附近的醫院、捷運、公園、市場</small></span></summary>
       <div class="x-body" id="xLifeBody"><p class="muted">打開後會自動查詢…</p></div></details>`;
   }
   function wireLife(v, root) {
     const det = $('#xLife', root), body = $('#xLifeBody', root);
+    const start = () => { body.innerHTML = gmapLinks(v) + '<p class="muted">想看列表（幾公尺、走路幾分鐘）可以試試開放地圖查詢。這是免費服務，常常很忙，可能要等一分鐘或查不到。</p><button class="small" id="xLifeRe">🔎 用開放地圖查詢清單</button>'; $('#xLifeRe', body).onclick = () => load(true); };
     const load = async force => {
-      body.innerHTML = '<p class="muted">查詢中，大約需要幾秒…</p>';
+      body.innerHTML = gmapLinks(v) + '<p class="muted">開放地圖查詢中，最多等一分鐘…</p>';
       try { const r = await lifeFor(v, force); body.innerHTML = lifeTable(v, r); $('#xLifeRe', body).onclick = () => load(true); }
-      catch (e) { body.innerHTML = '<p>目前查不到資料，可能是網路不穩或免費查詢服務忙碌，請稍後再試，或先用下面的 Google 地圖查。</p><button class="small" id="xLifeRe">再試一次</button>' + gmapLinks(v) + '<p class="muted">（原因：' + esc(e.message) + '）</p>'; $('#xLifeRe', body).onclick = () => load(true); }
+      catch (e) { body.innerHTML = gmapLinks(v) + '<p>開放地圖這次查不到（免費服務太忙），請用上面的 Google 地圖按鈕，或晚點再試。</p><button class="small" id="xLifeRe">再試一次</button><p class="muted">（原因：' + esc(e.message) + '）</p>'; $('#xLifeRe', body).onclick = () => load(true); }
     };
     const cached = ls.get('life:' + v.id, null);
-    if (cached) { det.open = true; body.innerHTML = lifeTable(v, cached); $('#xLifeRe', body).onclick = () => load(true); }
-    det.addEventListener('toggle', () => { if (det.open && !ls.get('life:' + v.id, null)) load(false); });
+    if (cached) { body.innerHTML = lifeTable(v, cached); $('#xLifeRe', body).onclick = () => load(true); } else start();
   }
   function lifeShort(id) {
     const r = ls.get('life:' + id, null); if (!r) return null;
@@ -164,7 +164,7 @@
   // 地圖圖層
   let map, lifeLayer, layerOn = ls.get('lifeLayers', []), lastKey = '', fetching = false;
   function mapReady(m) {
-    map = m;
+    map = m; return; // 免費查詢服務太不穩定，地圖圖層暫時停用
     lifeLayer = L.layerGroup().addTo(map);
     const Ctl = L.Control.extend({
       options: { position: 'topright' },

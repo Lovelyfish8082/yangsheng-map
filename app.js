@@ -513,6 +513,8 @@
       ['費用說明', v => v.monthly.text],
       ['房型', v => v.rooms],
       ['醫療', v => v.medical],
+      ['最近的醫院', v => (v.nearby && v.nearby.hospital) || '—'],
+      ['最近的車站', v => (v.nearby && v.nearby.station) || '—'],
       ['資格', v => v.eligibility],
       ['特色', v => v.tags.join('、')]
     );

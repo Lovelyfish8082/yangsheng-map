@@ -141,19 +141,21 @@
       <button class="small" id="xLifeRe">重新查詢</button></p>`;
   }
   function lifeHTML() {
-    return `<details class="x-sec" id="xLife"><summary><span class="k-ic">🏙️</span><span><b>附近生活機能</b><small>用 Google 地圖看附近的醫院、捷運、公園、市場</small></span></summary>
+    return `<details class="x-sec" id="xLife"><summary><span class="k-ic">🏙️</span><span><b>附近生活機能</b><small>最近的醫院、車站，以及用 Google 地圖看附近</small></span></summary>
       <div class="x-body" id="xLifeBody"><p class="muted">打開後會自動查詢…</p></div></details>`;
   }
   function wireLife(v, root) {
-    const det = $('#xLife', root), body = $('#xLifeBody', root);
+    const det = $('#xLife', root), body = $('#xLifeBody', root); det.open = true;
     const start = () => { body.innerHTML = gmapLinks(v) + '<p class="muted">想看列表（幾公尺、走路幾分鐘）可以試試開放地圖查詢。這是免費服務，常常很忙，可能要等一分鐘或查不到。</p><button class="small" id="xLifeRe">🔎 用開放地圖查詢清單</button>'; $('#xLifeRe', body).onclick = () => load(true); };
     const load = async force => {
       body.innerHTML = gmapLinks(v) + '<p class="muted">開放地圖查詢中，最多等一分鐘…</p>';
-      try { const r = await lifeFor(v, force); body.innerHTML = lifeTable(v, r); $('#xLifeRe', body).onclick = () => load(true); }
-      catch (e) { body.innerHTML = gmapLinks(v) + '<p>開放地圖這次查不到（免費服務太忙），請用上面的 Google 地圖按鈕，或晚點再試。</p><button class="small" id="xLifeRe">再試一次</button><p class="muted">（原因：' + esc(e.message) + '）</p>'; $('#xLifeRe', body).onclick = () => load(true); }
+      try { const r = await lifeFor(v, force); body.innerHTML = fixed + lifeTable(v, r); $('#xLifeRe', body).onclick = () => load(true); }
+      catch (e) { body.innerHTML = fixed + gmapLinks(v) + '<p>開放地圖這次查不到（免費服務太忙），請用上面的 Google 地圖按鈕，或晚點再試。</p><button class="small" id="xLifeRe">再試一次</button><p class="muted">（原因：' + esc(e.message) + '）</p>'; $('#xLifeRe', body).onclick = () => load(true); }
     };
     const cached = ls.get('life:' + v.id, null);
-    if (cached) { body.innerHTML = lifeTable(v, cached); $('#xLifeRe', body).onclick = () => load(true); } else start();
+    const fixed = v.nearby ? `<div class="x-life x-fixed"><div><span class="k-ic">🏥</span><span><b>最近的醫院</b><small>${esc(v.nearby.hospital)}</small></span></div><div><span class="k-ic">🚇</span><span><b>最近的車站</b><small>${esc(v.nearby.station)}</small></span></div><p class="muted">依地圖估算的大約距離，實際以 Google 地圖為準。</p></div>` : '';
+    const st0 = start; const start2 = () => { st0(); body.insertAdjacentHTML('afterbegin', fixed); };
+    if (cached) { body.innerHTML = fixed + lifeTable(v, cached); $('#xLifeRe', body).onclick = () => load(true); } else start2();
   }
   function lifeShort(id) {
     const r = ls.get('life:' + id, null); if (!r) return null;

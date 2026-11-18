@@ -39,7 +39,11 @@
       "verified_at": "2026-11-17",
       "founded": 2005,
       "founded_note": null,
-      "founded_source": "https://www.cgmh.org.tw/cgmn/cgmn_file/2412014.pdf"
+      "founded_source": "https://www.cgmh.org.tw/cgmn/cgmn_file/2412014.pdf",
+      "nearby": {
+        "hospital": "林口長庚紀念醫院（約 1～2 公里，長庚體系後援）",
+        "station": "機場捷運 A8 長庚醫院站（約 1～2 公里）"
+      }
     },
     {
       "id": "kang-ning",
@@ -77,7 +81,11 @@
       "founded": 1999,
       "founded_note": null,
       "founded_source": null,
-      "founded_by": "family"
+      "founded_by": "family",
+      "nearby": {
+        "hospital": "康寧醫院（步行可到）；較大醫院：三軍總醫院內湖院區（約 2 公里）",
+        "station": "捷運文湖線 葫洲站（約 1 公里）"
+      }
     },
     {
       "id": "run-fu",
@@ -115,7 +123,11 @@
       "verified_at": "2026-11-17",
       "founded": 1996,
       "founded_note": null,
-      "founded_source": "https://health.tvbs.com.tw/life/358897"
+      "founded_source": "https://health.tvbs.com.tw/life/358897",
+      "nearby": {
+        "hospital": "淡水馬偕紀念醫院（園區有醫療專車）",
+        "station": "捷運淡水信義線（確切地址待確認，請電洽）"
+      }
     },
     {
       "id": "jasper",
@@ -154,7 +166,11 @@
       "verified_at": "2026-11-17",
       "founded": 2019,
       "founded_note": null,
-      "founded_source": "https://cdn.technews.tw/2021/01/24/what-health-house-does-the-rich-old-man-want-to-live-in/"
+      "founded_source": "https://cdn.technews.tw/2021/01/24/what-health-house-does-the-rich-old-man-want-to-live-in/",
+      "nearby": {
+        "hospital": "新北市立聯合醫院板橋院區（約 1～2 公里）、亞東紀念醫院（約 3 公里）",
+        "station": "板橋車站：台鐵、高鐵、捷運板南線（約 1 公里）"
+      }
     },
     {
       "id": "letaoju-zhonghe",
@@ -192,7 +208,11 @@
       "verified_at": "2026-11-17",
       "founded": 2018,
       "founded_note": null,
-      "founded_source": "https://www.moneyweekly.com.tw/_Article?AID=50477"
+      "founded_source": "https://www.moneyweekly.com.tw/_Article?AID=50477",
+      "nearby": {
+        "hospital": "衛福部雙和醫院（約 2 公里）",
+        "station": "捷運 景安站：中和新蘆線、環狀線（約 0.5 公里）"
+      }
     },
     {
       "id": "letaoju-sanzhi",
@@ -229,7 +249,11 @@
       "verified_at": "2026-11-17",
       "founded": 2026,
       "founded_note": "與日初不老莊園同園區，2026 年完工交屋",
-      "founded_source": "https://www.ctee.com.tw/news/20260521701283-430606"
+      "founded_source": "https://www.ctee.com.tw/news/20260521701283-430606",
+      "nearby": {
+        "hospital": "淡水馬偕紀念醫院（約 10 公里以上，開車約 20～30 分鐘）",
+        "station": "捷運淡水站（約 10 公里以上，需搭公車或開車）"
+      }
     },
     {
       "id": "richu",
@@ -267,7 +291,11 @@
       "verified_at": "2026-11-17",
       "founded": 2026,
       "founded_note": "2026 年完工交屋",
-      "founded_source": "https://www.ctee.com.tw/news/20260521701283-430606"
+      "founded_source": "https://www.ctee.com.tw/news/20260521701283-430606",
+      "nearby": {
+        "hospital": "淡水馬偕紀念醫院（約 10 公里以上，開車約 20～30 分鐘）",
+        "station": "捷運淡水站（約 10 公里以上，需搭公車或開車）"
+      }
     },
     {
       "id": "mackay-sanzhi",
@@ -304,7 +332,11 @@
       "verified_at": null,
       "founded": 2000,
       "founded_note": null,
-      "founded_source": "https://www.slehtaiwan.com/about-us"
+      "founded_source": "https://www.slehtaiwan.com/about-us",
+      "nearby": {
+        "hospital": "淡水馬偕紀念醫院（約 10 公里以上，開車約 20～30 分鐘）；與馬偕體系有關聯，請電洽確認",
+        "station": "捷運淡水站（約 10 公里以上，需搭公車或開車）"
+      }
     },
     {
       "id": "sampo-tucheng",
@@ -342,7 +374,11 @@
       "verified_at": "2026-11-17",
       "founded": 2027,
       "founded_note": "2026 年底完工、預計 2027 年第一季營運",
-      "founded_source": "https://news.cnyes.com/news/id/6269356"
+      "founded_source": "https://news.cnyes.com/news/id/6269356",
+      "nearby": {
+        "hospital": "新北市立土城醫院（約 2～3 公里）",
+        "station": "捷運板南線 頂埔站（約 1 公里）"
+      }
     },
     {
       "id": "yangming",
@@ -380,7 +416,11 @@
       "founded": 1999,
       "founded_note": null,
       "founded_source": null,
-      "founded_by": "family"
+      "founded_by": "family",
+      "nearby": {
+        "hospital": "臺北榮民總醫院、新光醫院（約 5 公里以上，位在陽明山上）",
+        "station": "捷運 劍潭站／士林站（約 5 公里以上，需搭公車）"
+      }
     },
     {
       "id": "zhulun",
@@ -418,7 +458,11 @@
       "verified_at": "2026-11-17",
       "founded": 2006,
       "founded_note": null,
-      "founded_source": "https://ocacnews.net/article/117617"
+      "founded_source": "https://ocacnews.net/article/117617",
+      "nearby": {
+        "hospital": "臺北長庚紀念醫院（約 1～2 公里）",
+        "station": "捷運 南京復興站（約 1 公里）"
+      }
     },
     {
       "id": "zhongshan",
@@ -456,7 +500,11 @@
       "verified_at": "2026-11-17",
       "founded": 2010,
       "founded_note": null,
-      "founded_source": "https://www.thenewslens.com/article/180241"
+      "founded_source": "https://www.thenewslens.com/article/180241",
+      "nearby": {
+        "hospital": "馬偕紀念醫院台北院區（約 1 公里）",
+        "station": "捷運 中山國小站、行天宮站（約 0.5～1 公里）"
+      }
     },
     {
       "id": "dalong",
@@ -494,7 +542,11 @@
       "verified_at": "2026-11-17",
       "founded": 2013,
       "founded_note": null,
-      "founded_source": "https://sec.gov.taipei/News_Content.aspx?n=49B4C3242CB7658C&sms=72544237BBE4C5F6&s=FFF03CCBA90F1B9B"
+      "founded_source": "https://sec.gov.taipei/News_Content.aspx?n=49B4C3242CB7658C&sms=72544237BBE4C5F6&s=FFF03CCBA90F1B9B",
+      "nearby": {
+        "hospital": "臺北市立聯合醫院中興院區（約 2 公里）",
+        "station": "捷運 圓山站、大橋頭站（約 1 公里）"
+      }
     },
     {
       "id": "wugu",
@@ -532,7 +584,11 @@
       "founded": 2006,
       "founded_note": null,
       "founded_source": null,
-      "founded_by": "family"
+      "founded_by": "family",
+      "nearby": {
+        "hospital": "衛福部臺北醫院（新莊，約 3～5 公里）",
+        "station": "捷運 蘆洲站（約 3 公里）"
+      }
     },
     {
       "id": "rj-banqiao",
@@ -570,7 +626,11 @@
       "verified_at": "2026-11-18",
       "founded": null,
       "founded_note": null,
-      "founded_source": null
+      "founded_source": null,
+      "nearby": {
+        "hospital": "亞東紀念醫院（約 2～3 公里）；榮家內有醫療保健服務",
+        "station": "台鐵 浮洲站（約 1 公里）"
+      }
     },
     {
       "id": "rj-taipei",
@@ -608,7 +668,11 @@
       "verified_at": "2026-11-18",
       "founded": null,
       "founded_note": null,
-      "founded_source": null
+      "founded_source": null,
+      "nearby": {
+        "hospital": "恩主公醫院（三峽，約 3～5 公里）；榮家內有醫療保健服務",
+        "station": "附近沒有捷運，需搭公車或開車"
+      }
     },
     {
       "id": "rj-taoyuan",
@@ -646,7 +710,11 @@
       "verified_at": "2026-11-18",
       "founded": null,
       "founded_note": null,
-      "founded_source": null
+      "founded_source": null,
+      "nearby": {
+        "hospital": "榮家內有醫療保健服務；大型醫院需開車前往（請電洽確認合作醫院）",
+        "station": "附近沒有捷運，需搭公車或開車"
+      }
     },
     {
       "id": "rj-bade",
@@ -684,7 +752,11 @@
       "verified_at": "2026-11-18",
       "founded": null,
       "founded_note": null,
-      "founded_source": null
+      "founded_source": null,
+      "nearby": {
+        "hospital": "榮家內有醫療保健服務；大型醫院需開車前往（請電洽確認合作醫院）",
+        "station": "附近沒有捷運，需搭公車或開車"
+      }
     }
   ]
 }

@@ -479,6 +479,7 @@
     $('#dNote').oninput = e => { state.notes[v.id] = e.target.value; store.set('notes', state.notes); };
     const addBtn = $('#dAddPlace');
     if (addBtn) addBtn.onclick = () => { closeDetail(); openCenterSheet(); };
+    if (window.YSMX) window.YSMX.detail(v, b);
     openSheet('detail');
     if (keepScroll) $('#detail').scrollTop = scroll;
     if (location.hash !== '#/v/' + v.id) history.pushState(null, '', '#/v/' + v.id);
@@ -515,6 +516,10 @@
       ['資格', v => v.eligibility],
       ['特色', v => v.tags.join('、')]
     );
+    if (window.YSMX) {
+      if (list.some(v => window.YSMX.lifeShort(v.id))) rows.push(['生活機能', v => window.YSMX.lifeShort(v.id) || '在詳細頁打開「附近生活機能」查詢']);
+      rows.push(['我的參觀評分', v => window.YSMX.visitText(v.id)]);
+    }
     let html = '<div class="cmp-wrap"><table class="cmp"><thead><tr>' +
       list.map(v => '<th>' + esc(v.name) + '<br><button class="small" data-rm="' + v.id + '">移除</button></th>').join('') +
       '</tr></thead><tbody>';
@@ -690,6 +695,7 @@
     };
     bindFilters();
     window.addEventListener('popstate', () => {
+      if (window.YSMX && window.YSMX.consumePop()) return;
       const m = location.hash.match(/^#\/v\/(.+)$/);
       if (m) openDetail(m[1]); else if (!$('#detail').hidden) { closeSheet('detail'); state.openId = null; rerenderCurrent(); }
     });
@@ -705,13 +711,14 @@
       const res = await fetch('data/villages.json', { cache: 'no-cache' });
       const data = await res.json();
       state.villages = data.villages;
+      if (window.YSMX) window.YSMX.setVillages(() => state.villages);
     } catch (e) {
       document.querySelector('main').innerHTML = '<p>資料載入失敗，請確認網路後重新整理。</p>';
       return;
     }
     state.compare = state.compare.filter(id => state.villages.some(v => v.id === id));
     updateCmpCount();
-    if (window.L) initMap(); else $('#map').innerHTML = '<p style="padding:16px">地圖需要網路才能顯示，可以先用「📋 列表」。</p>';
+    if (window.L) { initMap(); if (window.YSMX) window.YSMX.mapReady(map); } else $('#map').innerHTML = '<p style="padding:16px">地圖需要網路才能顯示，可以先用「📋 列表」。</p>';
     drawPlaces();
     renderList();
     fitMap();

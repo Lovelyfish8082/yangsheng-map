@@ -1,6 +1,6 @@
 /* 離線快取：頁面與資料用「網路優先」，函式庫與地圖圖磚用「快取優先」 */
-const VERSION = 'ysm-v16';
-const CORE = ['./', 'index.html', 'styles.css', 'app.js', 'know.js', 'data/villages.json', 'manifest.webmanifest', 'icons/icon-192-v3.png', 'vendor/leaflet/leaflet.js', 'vendor/leaflet/leaflet.css', 'vendor/chartjs/chart.umd.js'];
+const VERSION = 'ysm-v17';
+const CORE = ['./', 'index.html', 'styles.css', 'app.js', 'know.js', 'extras.js', 'data/villages.json', 'manifest.webmanifest', 'icons/icon-192-v3.png', 'vendor/leaflet/leaflet.js', 'vendor/leaflet/leaflet.css', 'vendor/chartjs/chart.umd.js'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(CORE.map(u => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting()));

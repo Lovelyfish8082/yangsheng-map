@@ -60,32 +60,11 @@
     ['📈', '每年調漲', '問清楚多久調一次、最多漲多少']
   ];
   function costHTML() {
-    const c = ls.get('kcalc', { m: 4, d: 30, r: 3, y: 10, back: true });
     return `<div class="k-costs">${COSTS.map(([i, t, d]) => `<div><span>${i}</span><b>${esc(t)}</b><small>${esc(d)}</small></div>`).join('')}</div>
-      <h4 class="k-sub">試算：住幾年總共要花多少？</h4>
-      <div class="k-calc">
-        <label>每月費用（含伙食）<span><input id="kcM" type="number" inputmode="decimal" min="0" step="0.1" value="${c.m}"> 萬</span></label>
-        <label>保證金<span><input id="kcD" type="number" inputmode="decimal" min="0" step="1" value="${c.d}"> 萬</span></label>
-        <label>每年調漲<span><input id="kcR" type="number" inputmode="decimal" min="0" max="20" step="0.5" value="${c.r}"> %</span></label>
-        <label>住幾年<span><input id="kcY" type="number" inputmode="numeric" min="1" max="30" step="1" value="${c.y}"> 年</span></label>
-        <label class="k-check"><input id="kcB" type="checkbox" ${c.back ? 'checked' : ''}> 保證金離開時會退還</label>
-      </div>
-      <div id="kcOut" class="k-out"></div>
-      <div class="chart-wrap k-chart"><canvas id="kCalcChart"></canvas></div>`;
+      <h4 class="k-sub">住幾年總共要花多少？</h4>
+      <p>完整試算可以放進月費、伙食、保證金退還、每年調漲、以後請看護的費用，以及自己的存款和退休金，算出總花費和存款能撐多久。</p>
+      <button class="btn primary" id="kOpenCalc">🧮 打開完整費用試算</button>`;
   }
-  function calc() {
-    const v = id => Math.max(0, parseFloat($(id).value) || 0);
-    const c = { m: v('#kcM'), d: v('#kcD'), r: Math.min(20, v('#kcR')), y: Math.min(30, Math.max(1, Math.round(v('#kcY')) || 1)), back: $('#kcB').checked };
-    ls.set('kcalc', c);
-    let sum = 0; const years = [], vals = [];
-    for (let i = 1; i <= c.y; i++) { sum += c.m * 12 * Math.pow(1 + c.r / 100, i - 1); years.push('第' + i + '年'); vals.push(Math.round(sum)); }
-    const total = Math.round(sum + (c.back ? 0 : c.d));
-    $('#kcOut').innerHTML = `住 <b>${c.y}</b> 年，生活費合計約 <b>${Math.round(sum).toLocaleString()} 萬</b>` +
-      (c.d ? (c.back ? `，另外要先拿出保證金 <b>${c.d} 萬</b>（離開時退還）` : `，加上不退的保證金，共約 <b>${total.toLocaleString()} 萬</b>`) : '') +
-      `。<br><small>平均每年約 ${Math.round(total / c.y).toLocaleString()} 萬。看護、醫療費用沒有算進去。</small>`;
-    drawBar('kCalcChart', years, vals, '累計花費（萬元）');
-  }
-
   // ---------- 4. 挑選 8 點 ----------
   const POINTS = [
     ['✅', '入住條件', '幾歲可以住？要不要體檢？慢性病、行動不便收不收？'],
@@ -178,7 +157,7 @@
   const SECTIONS = [
     ['what', '🏡', '養生村是什麼？', '一張圖看懂養生村和其他地方的差別', () => `<p>養生村是給<b>身體健康、生活能自理</b>的長輩住的退休住宅，通常有餐點、健康管理、活動課程和緊急送醫，讓長輩不用再煩惱家務，又有朋友作伴。</p><p>它<b>不是醫院、也不是照顧機構</b>。下面這張圖，從左到右是身體越來越需要幫忙，看看每種地方適合哪個階段：</p>${spectrumHTML()}`],
     ['diff', '⚖️', '跟其他地方差在哪？', '適合誰、幾歲、月費、失智能不能住', compareHTML],
-    ['cost', '💰', '錢怎麼算？', '費用有哪些＋住 10 年要花多少試算', costHTML],
+    ['cost', '💰', '錢怎麼算？', '費用有哪些＋完整費用試算', costHTML],
     ['pick', '🔍', '挑選要看哪 8 點', '比較養生村時最重要的事', pointsHTML],
     ['visit', '📋', '參觀時要問的問題', '可以打勾，參觀時拿出來對照', checklistHTML],
     ['quiz', '🙋', '我適合住養生村嗎？', '10 題自我檢測', quizHTML],
@@ -247,7 +226,6 @@
   function refreshOpen() {
     document.querySelectorAll('.k-sec[open]').forEach(d => {
       if (d.dataset.sec === 'diff') drawFee();
-      if (d.dataset.sec === 'cost') calc();
       if (d.dataset.sec === 'quiz') quizResult();
     });
   }
@@ -256,7 +234,7 @@
       ls.set('kopen', [...document.querySelectorAll('.k-sec[open]')].map(x => x.dataset.sec).filter(Boolean));
       if (d.open) refreshOpen();
     }));
-    ['#kcM', '#kcD', '#kcR', '#kcY', '#kcB'].forEach(s => $(s).addEventListener('input', calc));
+    $('#kOpenCalc').onclick = () => window.YSMX && window.YSMX.openCalc();
     $('#knowBody').addEventListener('change', e => {
       const k = e.target.dataset.k; if (!k) return;
       const done = ls.get('kchk', {}); if (e.target.checked) done[k] = 1; else delete done[k]; ls.set('kchk', done);

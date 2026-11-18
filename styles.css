@@ -278,3 +278,75 @@ html.fs-huge .tabbar button { font-size: .66em; }
 .k-src a { color: var(--brand); }
 html.fs-huge .k-sec { border: 3px solid #000; border-radius: 8px; box-shadow: none; }
 html.fs-huge .sp-bar i.on, html.fs-huge .k-yn button.on, html.fs-huge .k-num { background: #000; color: #ffde00; }
+
+/* ---------- 詳細頁擴充：照片、生活機能、參觀檢查表 ---------- */
+.x-detail { margin: 18px 0; display: grid; gap: 14px; }
+.x-calcbtn { width: 100%; }
+.x-sec { background: var(--card); border: 2px solid var(--line); border-radius: 20px; overflow: hidden; }
+.x-sec > summary { list-style: none; display: flex; gap: 12px; align-items: center; padding: 14px 16px; cursor: pointer; min-height: 64px; }
+.x-sec > summary::-webkit-details-marker { display: none; }
+.x-sec > summary::after { content: '＋'; margin-left: auto; color: var(--brand); font-weight: 700; font-size: 1.2em; }
+.x-sec[open] > summary::after { content: '－'; }
+.x-sec > summary b { display: block; font-size: 1.05em; }
+.x-sec > summary small { display: block; color: var(--muted); font-size: .8em; line-height: 1.4; }
+.x-body { padding: 4px 16px 16px; border-top: 2px dashed var(--line); }
+.x-g { margin: 14px 0 6px; font-size: .95em; color: var(--brand); }
+.x-links { display: grid; gap: 10px; margin-top: 12px; }
+.x-links .btn, .x-add { display: flex; align-items: center; justify-content: center; text-decoration: none; text-align: center; }
+.x-add { margin-top: 10px; cursor: pointer; }
+.x-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.x-gallery button { aspect-ratio: 1; border: 2px solid var(--line); border-radius: 12px; background: var(--soft) center / cover no-repeat; padding: 0; }
+.x-gallery p { grid-column: 1 / -1; margin: 4px 0; }
+.x-viewer { position: fixed; inset: 0; z-index: 2000; background: rgba(0, 0, 0, .9); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px; gap: 14px; }
+.x-viewer img { max-width: 100%; max-height: 75vh; border-radius: 8px; }
+.x-vbtns { display: flex; gap: 12px; }
+.x-life { display: grid; gap: 8px; margin-top: 12px; }
+.x-life > div { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+.x-life > div.none { opacity: .6; }
+.x-life b { display: block; }
+.x-life small { display: block; color: var(--muted); font-size: .82em; line-height: 1.45; }
+.x-date { display: flex; align-items: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.x-date input { font: inherit; min-height: 48px; padding: 4px 10px; border-radius: 12px; border: 2px solid var(--line); background: var(--bg); color: var(--ink); }
+.x-item { padding: 6px 0 10px; border-bottom: 1px dashed var(--line); }
+.x-item p { margin: 0 0 6px; }
+.x-rate { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.x-rate button { min-height: 48px; border-radius: 999px; border: 2px solid var(--line); background: var(--bg); font-size: .85em; padding: 0 4px; white-space: nowrap; }
+.x-rate button.on { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); font-weight: 700; }
+.x-stars { display: flex; gap: 6px; }
+.x-stars button { font-size: 2em; line-height: 1; border: none; background: none; color: var(--line); padding: 4px; min-width: 48px; min-height: 48px; }
+.x-stars button.on { color: #e3a82b; }
+
+/* 地圖生活機能圖層 */
+.x-layerctl { background: var(--card); border-radius: 12px !important; }
+.x-layerbtn { font: inherit; font-size: 16px; font-weight: 700; padding: 8px 12px; min-height: 44px; border: none; background: var(--card); color: var(--ink); border-radius: 12px; }
+.x-layerbtn.on { background: var(--brand); color: var(--brand-ink); }
+.x-layerpanel { padding: 6px 12px 10px; font-size: 16px; display: grid; gap: 4px; }
+.x-layerpanel label { display: flex; align-items: center; gap: 8px; min-height: 36px; }
+.x-layerpanel input { width: 22px; height: 22px; accent-color: var(--brand); }
+.x-hint { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
+.x-poi { font-size: 18px; line-height: 30px; text-align: center; background: #fff; border: 2px solid var(--ink); border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,.3); }
+
+/* 完整費用試算 */
+.c-grp { background: var(--card); border: 2px solid var(--line); border-radius: 20px; padding: 6px 14px 10px; margin: 12px 0; }
+.c-grp h4 { margin: 8px 0 4px; color: var(--brand); }
+.c-f { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--line); flex-wrap: wrap; }
+.c-f:last-child { border-bottom: none; }
+.c-f small { display: block; color: var(--muted); font-size: .75em; line-height: 1.35; }
+.c-in { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.c-in input { width: 5.2em; }
+.c-sel select { font: inherit; min-height: 52px; border-radius: 12px; border: 2px solid var(--line); background: var(--card); color: var(--ink); padding: 4px 10px; max-width: 100%; }
+.c-seg { display: flex; gap: 6px; }
+.c-seg button { min-height: 48px; min-width: 4em; border-radius: 999px; border: 2px solid var(--line); background: var(--bg); font-weight: 700; }
+.c-seg button.on { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); }
+.c-sum { display: grid; gap: 10px; }
+.c-big { background: var(--card); border-radius: 14px; padding: 10px 12px; }
+.c-big small { display: block; color: var(--muted); }
+.c-big b { display: block; font-size: 1.6em; color: var(--brand); line-height: 1.2; }
+.c-big span { font-size: .8em; color: var(--muted); }
+.c-list { margin: 0; padding-left: 1.2em; }
+.c-warn { background: #fde4d4; border-radius: 12px; padding: 10px 12px; }
+.c-ok { background: #e3eed5; border-radius: 12px; padding: 10px 12px; }
+html.fs-huge .x-sec, html.fs-huge .c-grp { border: 3px solid #000; border-radius: 8px; }
+html.fs-huge .x-rate button.on, html.fs-huge .c-seg button.on { background: #000; color: #ffde00; }
+html.fs-huge .x-rate { grid-template-columns: 1fr; }
+.x-links a.btn { color: var(--ink); }

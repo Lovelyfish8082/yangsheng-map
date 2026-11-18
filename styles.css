@@ -26,8 +26,8 @@
     --brand: #e08a62; --brand-ink: #2a1a10; --public: #8fb6d1; --private: #e08a62; --vet: #a8c47e;
     --good: #a8c47e; --warn: #f0c060;
   }
-html.big { --fs: 24px; }
-html.huge { --fs: 28px; }
+html.fs-big { --fs: 24px; }
+html.fs-huge { --fs: 28px; }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; background: var(--bg); color: var(--ink); }
@@ -188,22 +188,26 @@ h1, h2, .card h3, .big-nums b, .money b { font-family: "Noto Serif TC", "Songti 
 .cmp { border-radius: 20px; }
 
 /* ===== 字「特大」時自動切換高對比 ===== */
-html.huge {
+html.fs-huge {
   --bg: #ffffff; --card: #ffffff; --ink: #000000; --muted: #222222; --line: #000000; --soft: #fff7b8;
   --brand: #000000; --brand-ink: #ffde00; --public: #0040c0; --private: #b02a00; --vet: #006b1f; --tab-h: 88px;
 }
-html.huge body, html.huge h1, html.huge h2, html.huge .card h3, html.huge .big-nums b, html.huge .money b { font-family: -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
-html.huge .topbar { background: #000; color: #ffde00; border-bottom: none; }
-html.huge .ghost { color: #ffde00; border-color: #ffde00; }
-html.huge .card { border: 3px solid #000; border-radius: 8px; box-shadow: none; }
-html.huge .money div { border: 2px solid #000; border-radius: 6px; }
-html.huge .badge { border: 2px solid #000; color: #000; font-weight: 700; }
-html.huge .chip, html.huge .btn, html.huge .small, html.huge .big { border: 3px solid #000; border-radius: 8px; font-weight: 700; }
-html.huge .big-nums div, html.huge .dist-box, html.huge dl.info { border: 3px solid #000; border-radius: 8px; }
-html.huge .tabbar { border-top: 3px solid #000; }
-html.huge .tabbar button { color: #000; font-weight: 700; }
-html.huge .tabbar button.on { background: #ffde00; color: #000; border-radius: 0; }
+html.fs-huge body, html.fs-huge h1, html.fs-huge h2, html.fs-huge .card h3, html.fs-huge .big-nums b, html.fs-huge .money b { font-family: -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+html.fs-huge .topbar { background: #000; color: #ffde00; border-bottom: none; }
+html.fs-huge .ghost { color: #ffde00; border-color: #ffde00; }
+html.fs-huge .card { border: 3px solid #000; border-radius: 8px; box-shadow: none; }
+html.fs-huge .money div { border: 2px solid #000; border-radius: 6px; }
+html.fs-huge .badge { border: 2px solid #000; color: #000; font-weight: 700; }
+html.fs-huge .chip, html.fs-huge .btn, html.fs-huge .small, html.fs-huge .big { border: 3px solid #000; border-radius: 8px; font-weight: 700; }
+html.fs-huge .big-nums div, html.fs-huge .dist-box, html.fs-huge dl.info { border: 3px solid #000; border-radius: 8px; }
+html.fs-huge .tabbar { border-top: 3px solid #000; }
+html.fs-huge .tabbar button { color: #000; font-weight: 700; }
+html.fs-huge .tabbar button.on { background: #ffde00; color: #000; border-radius: 0; }
 .topbar h1 { white-space: nowrap; }
 .ghost { white-space: nowrap; }
-html.huge .topbar h1 { font-size: 1.1em; }
-html.huge .topbar h1::before { content: none; }
+html.fs-huge .topbar h1 { font-size: 1.1em; }
+html.fs-huge .topbar h1::before { content: none; }
+.topbar { gap: 8px; }
+.topbar h1 { min-width: 0; overflow: hidden; }
+.ghost { flex-shrink: 0; padding: 6px 10px; }
+@media (max-width: 360px) { .topbar h1::before { content: none; } }

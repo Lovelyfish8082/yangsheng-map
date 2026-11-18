@@ -135,10 +135,10 @@
   }
 
   // ---------- 字體大小 ----------
-  const SIZES = ['', 'big', 'huge'], SIZE_LABEL = ['字 大', '字 特大', '字 一般'];
+  const SIZES = ['', 'fs-big', 'fs-huge'], SIZE_LABEL = ['字 大', '字 特大', '字 一般'];
   let sizeIdx = store.get('size', 0);
   function applySize() {
-    document.documentElement.classList.remove('big', 'huge');
+    document.documentElement.classList.remove('fs-big', 'fs-huge');
     if (SIZES[sizeIdx]) document.documentElement.classList.add(SIZES[sizeIdx]);
     $('#fontBtn').textContent = SIZE_LABEL[sizeIdx];
     if (map) setTimeout(() => map.invalidateSize(), 50);

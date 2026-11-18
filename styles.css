@@ -13,19 +13,8 @@
   --good: #4f7a2e;
   --warn: #8a5a00;
   --tab-h: 76px;
+  color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #1f1914; --card: #2a221b; --ink: #f4ebdf; --muted: #cdbba6; --line: #4a3d31; --soft: #3a2e24;
-    --brand: #e08a62; --brand-ink: #2a1a10; --public: #8fb6d1; --private: #e08a62; --vet: #a8c47e;
-    --good: #a8c47e; --warn: #f0c060;
-  }
-}
-:root[data-theme="dark"] {
-    --bg: #1f1914; --card: #2a221b; --ink: #f4ebdf; --muted: #cdbba6; --line: #4a3d31; --soft: #3a2e24;
-    --brand: #e08a62; --brand-ink: #2a1a10; --public: #8fb6d1; --private: #e08a62; --vet: #a8c47e;
-    --good: #a8c47e; --warn: #f0c060;
-  }
 html.fs-big { --fs: 24px; }
 html.fs-huge { --fs: 28px; }
 
@@ -55,7 +44,7 @@ main { max-width: 900px; margin: 0 auto; padding: 0 16px; }
 .view.active { display: block; }
 
 .center-bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 0; flex-wrap: wrap; }
-#map { height: calc(100vh - 290px); min-height: 360px; border-radius: 14px; border: 1px solid var(--line); }
+#map { isolation: isolate; height: calc(100vh - 290px); min-height: 360px; border-radius: 14px; border: 1px solid var(--line); }
 .legend { display: flex; gap: 16px; flex-wrap: wrap; padding: 8px 0; font-size: .85em; }
 .dot { display: inline-block; width: 16px; height: 16px; border-radius: 50%; margin-right: 6px; vertical-align: -2px; border: 2px solid #fff; }
 .dot.public { background: var(--public); }
